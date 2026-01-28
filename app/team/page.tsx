@@ -20,7 +20,7 @@ const teamData = {
         { name: "Hassan Moassar", role: "FULL STACK DEV", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433028/WhatsApp_Image_2026-01-26_at_13.13.40_4_m801rm.jpg" },
         { name: "El Mehdi El Fatimy ", role: "FULL STACK DEV", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433046/WhatsApp_Image_2026-01-26_at_13.13.40_1_oakctp.jpg" },
         { name: "Mohamed Ibaa Ali", role: "FULL STACK DEV", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433025/WhatsApp_Image_2026-01-26_at_13.13.40_7_r40fkz.jpg" },
-        { name: "Mohamed Sari", role: "FULL STACK DEV", img: "https://messages-prod.27c852f3500f38c1e7786e2c9ff9e48f.r2.cloudflarestorage.com/019b5a1e-251f-7863-b4c8-d95348eea9cf/1769569640458-019c0291-7902-7f67-bd83-5bc5763bb76d.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=af634fe044bd071ab4c5d356fdace60f%2F20260128%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20260128T030721Z&X-Amz-Expires=3600&X-Amz-Signature=ecd5fddd415fd8dfea024d2cebb1ca6cf335ff8a9090d449566d205b2cced275&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject" },
+        { name: "Mohamed Sari", role: "FULL STACK DEV", img: "https://res.cloudinary.com/da63nggkh/image/upload/v1769570129/1769569640458-019c0291-7902-7f67-bd83-5bc5763bb76d_u0fxsf.png" },
         { name: "Asma Bendalh", role: "FULL STACK DEV", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769434889/WhatsApp_Image_2026-01-26_at_14.35.16_ayx2sp.jpg" },
         { name: "Mohamedkarim Kribi", role: "DEVOPS & FULLSTACK", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433045/WhatsApp_Image_2026-01-26_at_13.13.40_2_s1bppg.jpg" }
       ]
