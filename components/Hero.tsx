@@ -1,0 +1,202 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Play } from 'lucide-react';
+import Link from 'next/link';
+import AnimatedButton from './AnimatedButton';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export default function Hero() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoWrapperRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
+    const ctx = gsap.context(() => {
+      // 1. Scroll Expand Animation
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=100%",
+          scrub: 1,
+          pin: true,
+        }
+      });
+
+      tl.to(videoWrapperRef.current, {
+        width: "100%",
+        ease: "power2.inOut",
+      }, 0);
+
+      // Add a separate trigger to hide the fixed video when leaving the Hero section
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "bottom top",
+        onEnter: () => gsap.to(videoWrapperRef.current, { autoAlpha: 0, duration: 0.3 }),
+        onLeaveBack: () => gsap.to(videoWrapperRef.current, { autoAlpha: 1, duration: 0.3 }),
+      });
+
+      tl.to(".chevron-border", {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%)",
+        ease: "power2.inOut",
+      }, 0);
+
+      tl.to(".chevron-video", {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%)",
+        ease: "power2.inOut",
+      }, 0);
+
+      tl.to(contentRef.current, {
+        opacity: 0,
+        x: 100,
+        ease: "power2.inOut",
+      }, 0);
+
+      // 2. Entrance Animation
+      const tlEntrance = gsap.timeline();
+      tlEntrance.from(".hero-badge", {
+        y: -20,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      })
+        .from(".hero-title span", {
+          y: 60,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power4.out"
+        }, "-=0.4")
+        .from(".hero-services", {
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        }, "-=0.6")
+        .from(".hero-description", {
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out"
+        }, "-=0.6")
+        .from(".hero-btns", {
+          scale: 0.9,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)"
+        }, "-=0.6");
+
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [mounted]);
+
+  if (!mounted) return <div className="h-screen bg-black" />;
+
+  return (
+    <div ref={containerRef} data-bgcolor="#000000" className="relative w-full h-screen bg-background overflow-hidden flex flex-col md:flex-row">
+
+      {/* Unique Animated Background Layers (Common to both sections) */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-accent/20 blur-[120px] rounded-full animate-aura"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-secondary/20 blur-[120px] rounded-full animate-aura-reverse"></div>
+        <div className="absolute top-[20%] right-[10%] w-[40%] h-[40%] bg-purple-500/10 blur-[100px] rounded-full animate-aura" style={{ animationDelay: '-5s' }}></div>
+        <div className="absolute inset-0 grid-bg z-0 opacity-20 grid-breathing"></div>
+      </div>
+
+      {/* Video Section Wrapper */}
+      <div
+        ref={videoWrapperRef}
+        className="fixed left-0 top-0 h-full w-[50%] z-10 pointer-events-none"
+      >
+        {/* Layer 1: Border Effect - Z-0 */}
+        <div
+          className="chevron-border absolute inset-0 bg-secondary w-full h-full z-0"
+          style={{
+            clipPath: "polygon(0 0, 60.5% 0, 95.5% 50%, 60.5% 100%, 0 100%)"
+          }}
+        ></div>
+
+        {/* Layer 2: Video (Foreground) - Z-10 */}
+        <div
+          className="chevron-video absolute inset-0 bg-black w-full h-full z-10"
+          style={{
+            clipPath: "polygon(0 0, 60% 0, 95% 50%, 60% 100%, 0 100%)"
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-80 grayscale"
+          >
+            <source src={"/video.mp4"} type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+      </div>
+
+      {/* Content Section (Right Side) */}
+      <div ref={contentRef} className="relative z-20 w-full md:w-1/2 ml-auto h-full flex flex-col justify-center px-12 md:pr-20 items-center md:items-start text-center md:text-left overflow-hidden">
+
+        <div className="relative z-10 max-w-xl">
+          {/* Badge */}
+          <div className="hero-badge mb-6 inline-block px-4 py-1.5 rounded-full border border-accent/30 bg-accent/5 text-accent text-xs font-semibold tracking-wider uppercase">
+            Next-Gen Digital Agency
+          </div>
+
+          {/* Heading */}
+          <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1] mb-6">
+            <span className="inline-block">We</span> <span className="inline-block">Build</span> <span className="inline-block">Digital</span><br />
+            <span className="inline-block">Experiences</span> <span className="inline-block">That</span> <span className="text-gradient inline-block">Convert</span>
+          </h1>
+
+          {/* Services List */}
+          <div className="hero-services flex flex-wrap justify-center md:justify-start items-center gap-x-4 gap-y-2 mb-8 text-gray-400 text-xs md:text-sm font-medium">
+            <span>Web Development</span>
+            <span className="w-1 h-1 rounded-full bg-accent/50"></span>
+            <span>Mobile Apps</span>
+            <span className="w-1 h-1 rounded-full bg-accent/50"></span>
+            <span>Digital Marketing</span>
+            <span className="w-1 h-1 rounded-full bg-accent/50"></span>
+            <span>UI/UX Design</span>
+          </div>
+
+          {/* Description */}
+          <p className="hero-description text-gray-400 text-sm md:text-base max-w-md mb-10 leading-relaxed">
+            Elevate your brand with data-driven strategies and cutting-edge design.
+            We turn complex ideas into seamless digital realities.
+          </p>
+
+          {/* Buttons */}
+          <div className="hero-btns flex flex-col sm:flex-row items-center gap-4">
+            <AnimatedButton href="/services" showIcon={true} variant="primary">
+              Get Started
+            </AnimatedButton>
+
+            <AnimatedButton
+              href="/work"
+              showIcon={true}
+              variant="secondary"
+              className="hover:border-secondary transition-all duration-500"
+            >
+              View Our Work
+            </AnimatedButton>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  );
+}
