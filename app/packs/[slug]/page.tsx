@@ -4,7 +4,22 @@ import { useParams } from 'next/navigation';
 import { Check, Zap, Star, ShieldCheck, Infinity, Settings2 } from 'lucide-react';
 import AnimatedButton from '@/components/AnimatedButton';
 
-const packsData = {
+// 1. Definir l-interface bach TypeScript ma-ib9ach ichki
+interface Plan {
+  name: string;
+  price: string;
+  features: string[];
+  icon: React.ReactNode;
+  recommended?: boolean;
+  isCustom?: boolean; // Optional property
+}
+
+interface Pack {
+  title: string;
+  plans: Plan[];
+}
+
+const packsData: Record<string, Pack> = {
   web: {
     title: "Pack Web",
     plans: [
@@ -95,12 +110,10 @@ export default function PackPage() {
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden pb-32">
-      {/* Background Decor */}
       <div className="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
       <div className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] glow-purple opacity-20 animate-aura"></div>
 
       <main className="relative z-10 pt-44 px-6 max-w-[90rem] mx-auto">
-        {/* Header Section */}
         <div className="text-center mb-24">
           <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Tarification Transparente</span>
           <h1 className="text-6xl md:text-[120px] font-black uppercase tracking-tighter leading-none mb-4">
@@ -112,7 +125,6 @@ export default function PackPage() {
           </p>
         </div>
 
-        {/* Pricing Grid */}
         <div className={`grid grid-cols-1 gap-8 items-stretch ${pack.plans.length === 4 ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-3'}`}>
           {pack.plans.map((plan, index) => (
             <div 
@@ -129,7 +141,6 @@ export default function PackPage() {
                 </div>
               )}
 
-              {/* Card Header */}
               <div className="mb-12">
                 <div className="flex items-center gap-4 mb-8">
                   <div className={`p-4 rounded-[1.5rem] transition-colors ${plan.recommended ? 'bg-accent text-white' : 'bg-white/5 text-accent group-hover:bg-accent/20'}`}>
@@ -139,6 +150,7 @@ export default function PackPage() {
                 </div>
                 
                 <div className="flex flex-col">
+                  {/* Hna l-Fix dial TypeScript: plan.isCustom m9ada daba */}
                   {plan.isCustom ? (
                     <span className="text-3xl font-black uppercase tracking-tighter leading-none">{plan.price}</span>
                   ) : (
@@ -153,7 +165,6 @@ export default function PackPage() {
                 </div>
               </div>
 
-              {/* Features List */}
               <ul className="space-y-6 mb-16 flex-grow">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-4">
@@ -167,7 +178,6 @@ export default function PackPage() {
                 ))}
               </ul>
 
-              {/* Action Button */}
               <div className="mt-auto">
                 <AnimatedButton 
                   href={`/contact?service=${slug}&plan=${plan.name}`} 
@@ -178,16 +188,11 @@ export default function PackPage() {
                 </AnimatedButton>
               </div>
 
-              {/* Visual Aura for Hover */}
               <div className={`absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-700 -z-10 bg-gradient-to-br from-accent to-secondary rounded-[3.5rem]`}></div>
             </div>
           ))}
         </div>
 
-        {/* Comparison Diagram Suggestion (Mental Placeholder) */}
-        
-
-        {/* Bottom Tagline */}
         <div className="mt-32 pt-16 border-t border-white/5 text-center">
           <p className="text-[9px] font-black uppercase tracking-[1em] text-white/10">
             C-DIGITAL EXCELLENCE • TRANSFORMING VISIONS INTO REALITY
