@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { Check, Zap, Star, ShieldCheck, infinity, Settings2 } from 'lucide-react';
+import { Check, Zap, Star, ShieldCheck, Infinity, Settings2 } from 'lucide-react';
 import AnimatedButton from '@/components/AnimatedButton';
 
 const packsData = {
