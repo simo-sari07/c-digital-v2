@@ -47,8 +47,8 @@ export default function ContactPage() {
     setIsSending(true);
 
     try {
-      // Logic dial sendEmail m9ada
-      await emailjs.send(
+      // 1. Logic dial sendEmail (Gmail via EmailJS)
+      const emailPromise = emailjs.send(
         "service_website", 
         "template_mv86q69", 
         {
@@ -61,6 +61,22 @@ export default function ContactPage() {
           to_name: "Responsable C-Digital",
         }
       );
+
+      // 2. Logic dial Google Sheets (fetch)
+      // TODO: Beddel had l-URL b l-URL dial l-script li 3tawk
+      const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzLFTtLcKNIuEZpox8rKeTFnWE8Urzh6lA2Pb9vmmF-yNlAmVH1U-Zzxs-AKoFl9UcjcQ/exec';
+      
+      const sheetPromise = fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Bach t-fada CORS issues
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // N-tsennawhom b-jouj i-kemlo
+      await Promise.all([emailPromise, sheetPromise]);
       
       setShowPopup({ show: true, success: true });
       setFormData({ fullName: '', email: '', company: '', phone: '', service: '', message: '' });
@@ -80,8 +96,8 @@ export default function ContactPage() {
       <main className="relative z-10 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-20">
           <div>
-            <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Contact Us</span>
-            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-tight mb-8">
+            <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block font-sans">Contact Us</span>
+            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-tight mb-8 font-sans">
               <span>DÉMARREZ LA</span> <br />
               <span className="text-gradient italic font-script lowercase">Conversation.</span>
             </h1>
@@ -111,7 +127,7 @@ export default function ContactPage() {
               <AnimatePresence mode="wait">
                 {currentStep === 0 && (
                   <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} key="step0" className="space-y-6">
-                    <h3 className="text-xl font-black uppercase mb-8">Tell us about you</h3>
+                    <h3 className="text-xl font-black uppercase mb-8 font-sans">Tell us about you</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <InputBlock label="Full Name" placeholder="Mohamed Karim" value={formData.fullName} onChange={(v:string) => setFormData({...formData, fullName: v})} icon={<User size={16}/>} />
                       <InputBlock label="Work Email" placeholder="mohamed@agency.com" value={formData.email} onChange={(v:string) => setFormData({...formData, email: v})} icon={<Mail size={16}/>} />
@@ -123,7 +139,7 @@ export default function ContactPage() {
 
                 {currentStep === 1 && (
                   <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} key="step1">
-                    <h3 className="text-xl font-black uppercase mb-8 text-accent">Select your needs</h3>
+                    <h3 className="text-xl font-black uppercase mb-8 font-sans text-accent">Select your needs</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[350px] overflow-y-auto pr-2 custom-scrollbar">
                       {needOptions.map((opt) => (
                         <button key={opt} type="button" onClick={() => setFormData({...formData, service: opt})} className={`p-4 rounded-2xl border text-left text-[11px] font-bold transition-all flex justify-between items-center ${formData.service === opt ? 'border-accent bg-accent/10 text-white shadow-[0_0_15px_rgba(99,102,241,0.1)]' : 'border-white/5 bg-white/5 text-white/40 hover:border-white/20'}`}>
@@ -139,8 +155,8 @@ export default function ContactPage() {
 
                 {currentStep === 2 && (
                   <motion.div initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -10 }} key="step2">
-                    <h3 className="text-xl font-black uppercase mb-8 text-green-500">Tell us about your project</h3>
-                    <textarea value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} placeholder="Détails supplémentaires, délais, budget estimé..." className="w-full h-40 bg-white/5 border border-white/10 rounded-3xl p-6 text-sm focus:border-green-500 outline-none transition-all placeholder:text-white/10 resize-none" />
+                    <h3 className="text-xl font-black uppercase mb-8 font-sans text-green-500">Tell us about your project</h3>
+                    <textarea value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} placeholder="Détails supplémentaires, délais, budget estimé..." className="w-full h-40 bg-white/5 border border-white/10 rounded-3xl p-6 text-sm focus:border-green-500 outline-none transition-all placeholder:text-white/10 resize-none font-sans" />
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -183,7 +199,7 @@ export default function ContactPage() {
                <p className="text-gray-400 text-sm mb-8 leading-relaxed">
                  {showPopup.success 
                    ? 'Merci pour votre confiance. Notre équipe reviendra vers vous dans les plus brefs délais.' 
-                   : 'Veuillez vérifier les domaines autorisés (localhost) f l-account dyal EmailJS.'}
+                   : 'Désolé, un problème technique est survenu. Veuillez réessayer plus tard.'}
                </p>
                <button type="button" onClick={() => setShowPopup({ ...showPopup, show: false })} className="w-full py-4 bg-white text-black font-black uppercase text-[10px] tracking-widest rounded-2xl hover:bg-gray-200 transition-colors">
                   Fermer
@@ -196,13 +212,14 @@ export default function ContactPage() {
   );
 }
 
+// Sub-components
 function InputBlock({ label, placeholder, value, onChange, icon }: any) {
   return (
     <div className="space-y-2">
       <label className="text-[9px] font-black uppercase tracking-widest text-white/20 ml-2 tracking-widest uppercase">{label}</label>
       <div className="relative">
         <div className="absolute left-5 top-1/2 -translate-y-1/2 text-white/20">{icon}</div>
-        <input type="text" required value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-14 pr-6 text-sm focus:border-accent outline-none transition-all placeholder:text-white/10" />
+        <input type="text" required value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-14 pr-6 text-sm focus:border-accent outline-none transition-all placeholder:text-white/10 font-sans" />
       </div>
     </div>
   );
