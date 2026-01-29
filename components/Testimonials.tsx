@@ -181,7 +181,7 @@ const MobileTestimonialSlider = () => {
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" data-bgcolor="#000000" className="bg-black py-20 md:py-32 overflow-hidden w-full relative">
+    <section id="testimonials" data-bgcolor="#000000" className="bg-black py-24 md:py-32 overflow-hidden w-full relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-12 md:mb-20 relative z-30">
         <SectionTitle className="mb-6 text-3xl md:text-5xl lg:text-7xl">
           The Only <span className="font-script text-accent normal-case">Testimonials</span> <br className="hidden md:block" /> You'll Ever Need

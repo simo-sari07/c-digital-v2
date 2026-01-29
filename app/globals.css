@@ -19,6 +19,13 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-script: var(--font-permanent-marker);
+  --font-button: var(--font-anton);
+  --font-title: var(--font-anton);
+}
+
+button, .font-button, h1, h2, h3, h4, h5, .font-title {
+  font-family: var(--font-button), var(--font-sans), sans-serif;
+  font-weight: 700; /* Bold */
 }
 
 .grid-bg {
@@ -29,11 +36,19 @@
 }
 
 .glow-purple {
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.15) 0%,
+    transparent 70%
+  );
 }
 
 .glow-pink {
-  background: radial-gradient(circle, rgba(217, 70, 239, 0.15) 0%, transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(217, 70, 239, 0.15) 0%,
+    transparent 70%
+  );
 }
 
 .text-gradient {
@@ -74,7 +89,6 @@
 }
 
 @keyframes breathing {
-
   0%,
   100% {
     opacity: 0.1;

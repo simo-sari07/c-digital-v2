@@ -35,59 +35,55 @@ export default function TrustedBy() {
   }, []);
 
   return (
-    <div className="bg-black py-24 overflow-hidden relative">
-      {/* Background Decor */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[300px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 mb-16 relative z-10">
-        <div className="flex items-center justify-center gap-8">
-          {/* Refined Left Decoration */}
-          <div className="hidden md:block w-32 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-white/30" />
-
-          <h2 className="text-white/30 text-[9px] md:text-[11px] font-medium uppercase tracking-[0.5em] whitespace-nowrap">
-            World-class institutions <span className="text-accent/50 font-bold ml-1">trust us.</span>
-          </h2>
-
-          {/* Refined Right Decoration */}
-          <div className="hidden md:block w-32 h-[1px] bg-gradient-to-l from-transparent via-white/10 to-white/30" />
+    <section id="trusted-by" className="bg-[#030303] py-12 border-y border-white/5 overflow-hidden w-full relative">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-0">
+        
+        {/* Left: Text & Separator */}
+        <div className="flex items-center w-full md:w-auto z-10 relative">
+          <p className="text-white/60 font-bold text-sm md:text-base leading-tight max-w-[160px]">
+            Trusted by 150+ top brands worldwide.
+          </p>
+          <div className="hidden md:block w-[1px] h-8 bg-white/10 mx-8"></div>
         </div>
-      </div>
 
-      <div className="relative py-12 border-y border-white/[0.03] bg-white/[0.01]">
-        {/* Deeper Shadow Overlays */}
-        <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-black via-black/90 to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute inset-y-0 right-0 w-64 bg-gradient-to-l from-black via-black/90 to-transparent z-10 pointer-events-none"></div>
+        {/* Right: Marquee */}
+        <div className="flex-1 w-full overflow-hidden relative">
+           {/* Side Gradients for smooth fade */}
+           <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#030303] to-transparent z-10 pointer-events-none"></div>
+           <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#030303] to-transparent z-10 pointer-events-none"></div>
 
-        <div 
-          ref={marqueeRef}
-          className="flex whitespace-nowrap min-w-full"
-        >
-          {/* First set of logos */}
-          <div className="flex items-center gap-24 md:gap-48 pr-24 md:pr-48">
-            {logos.map((logo, i) => (
-              <div key={i} className="flex-shrink-0">
-                <img 
-                  src={logo}
-                  alt="Partner Logo"
-                  className="h-5 md:h-8 w-auto opacity-20 grayscale brightness-150 hover:opacity-100 hover:grayscale-0 transition-all duration-1000 cursor-pointer object-contain"
-                />
-              </div>
-            ))}
-          </div>
-          {/* Duplicate set for seamless loop */}
-          <div className="flex items-center gap-24 md:gap-48 pr-24 md:pr-48">
-            {logos.map((logo, i) => (
-              <div key={`dup-${i}`} className="flex-shrink-0">
-                <img 
-                  src={logo}
-                  alt="Partner Logo"
-                  className="h-5 md:h-8 w-auto opacity-20 grayscale brightness-150 hover:opacity-100 hover:grayscale-0 transition-all duration-1000 cursor-pointer object-contain"
-                />
-              </div>
-            ))}
+          <div 
+            ref={marqueeRef}
+            className="flex whitespace-nowrap min-w-full items-center"
+          >
+            {/* First set of logos */}
+            <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24">
+              {logos.map((logo, i) => (
+                <div key={i} className="flex-shrink-0 group">
+                  <img 
+                    src={logo}
+                    alt="Partner Logo"
+                    className="h-6 md:h-8 w-auto opacity-40 grayscale brightness(0) invert(1) group-hover:opacity-100 group-hover:grayscale-0 group-hover:filter-none transition-all duration-300 cursor-pointer object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Duplicate set for seamless loop */}
+            <div className="flex items-center gap-16 md:gap-24 pr-16 md:pr-24">
+              {logos.map((logo, i) => (
+                <div key={`dup-${i}`} className="flex-shrink-0 group">
+                  <img 
+                    src={logo}
+                    alt="Partner Logo"
+                    className="h-6 md:h-8 w-auto opacity-40 grayscale brightness(0) invert(1) group-hover:opacity-100 group-hover:grayscale-0 group-hover:filter-none transition-all duration-300 cursor-pointer object-contain"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+
       </div>
-    </div>
+    </section>
   );
 }

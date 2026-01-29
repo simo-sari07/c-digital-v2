@@ -84,7 +84,7 @@ export default function AnimatedButton({
     secondary: "bg-transparent border-white/20 text-white hover:border-white/40",
   };
 
-  const commonClasses = `relative inline-flex items-center justify-center px-8 py-3.5 font-bold uppercase tracking-widest rounded-xl overflow-hidden border transition-all duration-300 group ${variants[variant]} ${className}`;
+  const commonClasses = `relative inline-flex items-center justify-center px-8 py-3.5 font-button font-bold uppercase tracking-widest rounded-xl overflow-hidden border transition-all duration-300 group ${variants[variant]} ${className}`;
 
   const innerContent = (
     <div className="relative z-10 flex items-center gap-4">

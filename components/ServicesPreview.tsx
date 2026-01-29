@@ -46,7 +46,7 @@ const services = [
 
 export default function ServicesPreview() {
   return (
-    <SectionWrapper id="services" data-bgcolor="#050a14" className="bg-black py-20">
+    <SectionWrapper id="services" data-bgcolor="#050a14" className="bg-black">
       <div className="flex flex-col md:flex-row justify-between items-end mb-20 px-4 md:px-0">
         <SectionTitle className="text-left mb-0">
           The Only <span className="font-script text-accent normal-case">Services</span> <br className="hidden md:block" /> You'll Ever Need

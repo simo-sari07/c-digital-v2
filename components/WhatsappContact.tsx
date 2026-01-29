@@ -123,14 +123,6 @@ export default function WhatsappContact() {
           ) : (
             <>
               <FaWhatsapp size={28} />
-              <motion.div
-                className="absolute -top-1 -right-1 bg-green-500 text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold border-2 border-[#030303]"
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1 }}
-              >
-                1
-              </motion.div>
             </>
           )}
         </motion.button>

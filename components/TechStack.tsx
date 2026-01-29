@@ -65,7 +65,7 @@ const MarqueeRow = ({ items, reverse = false }: { items: typeof ICON_ROWS[0], re
 
 export default function TechStack() {
     return (
-        <section id="stack" data-bgcolor="#111111" className="bg-black py-20 overflow-hidden w-full relative">
+        <section id="stack" data-bgcolor="#111111" className="bg-black py-24 md:py-32 overflow-hidden w-full relative">
             {/* Title & Description */}
             <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-20 relative z-30">
                 <SectionTitle>

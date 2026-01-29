@@ -61,7 +61,7 @@ export default function WhyUs() {
   }, []);
 
   return (
-    <section ref={containerRef} data-bgcolor="#0f0714" className="bg-black py-32 overflow-hidden relative">
+    <section ref={containerRef} data-bgcolor="#0f0714" className="bg-black overflow-hidden relative">
       <SectionWrapper id="why-us">
         <div className="max-w-7xl mx-auto px-6">
           

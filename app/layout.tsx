@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono, Permanent_Marker } from 'next/font/google';
+import { Geist, Geist_Mono, Permanent_Marker, Anton } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -26,6 +26,12 @@ const permanentMarker = Permanent_Marker({
   subsets: ['latin'],
 });
 
+const anton = Anton({
+  variable: '--font-anton',
+  weight: '400',
+  subsets: ['latin'],
+});
+
 export const metadata: Metadata = {
   title: 'C-DIGITAL | Premium Web Agency',
   description: 'Helping ambitious brands make content people actually want to watch.',
@@ -39,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${permanentMarker.variable} antialiased bg-black text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} ${permanentMarker.variable} ${anton.variable} antialiased bg-black text-white`}
       >
         <SmoothScroll>
           <BackgroundScrollManager />

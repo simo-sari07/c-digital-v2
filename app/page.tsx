@@ -1,7 +1,7 @@
 'use client';
 
 import Hero from '@/components/Hero';
-import TrustedBy from '@/components/TrustedBy';
+// import TrustedBy from '@/components/TrustedBy';
 import AboutPreview from '@/components/AboutPreview';
 import ServicesPreview from '@/components/ServicesPreview';
 import TechStack from '@/components/TechStack';
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <TrustedBy />
+      {/* <TrustedBy /> */}
       <AboutPreview />
       <WhyUs />
       <ServicesPreview />

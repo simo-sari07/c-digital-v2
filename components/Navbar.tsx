@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Globe } from 'lucide-react';
 import AnimatedButton from './AnimatedButton';
 
 const packs = [
@@ -21,10 +21,17 @@ const navLinks = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
   const [isPacksOpen, setIsPacksOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Fix: Bloquer le scroll quand le menu est ouvert
   useEffect(() => {
@@ -34,6 +41,8 @@ export default function Navbar() {
       document.body.style.overflow = 'unset';
     }
   }, [isOpen]);
+
+  const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,6 +63,18 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <>
@@ -122,7 +143,37 @@ export default function Navbar() {
             </div>
 
             {/* Right side */}
-            <div className="flex items-center">
+            <div className="flex items-center gap-4">
+              {/* Language Switcher */}
+              <div 
+                ref={langRef}
+                className="hidden md:block relative"
+              >
+                <div 
+                  onClick={() => setIsLangOpen(!isLangOpen)}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors cursor-pointer group"
+                >
+                  <Globe size={16} className="text-white/70 group-hover:text-white transition-colors" />
+                  <span className="text-[12px] font-black uppercase tracking-widest text-white/70 group-hover:text-white transition-colors">EN</span>
+                  <ChevronDown size={12} className={`text-white/40 group-hover:text-white transition-transform duration-300 ${isLangOpen ? 'rotate-180' : ''}`} />
+                </div>
+
+                {/* Dropdown menu */}
+                <div className={`absolute top-full right-0 pt-2 transition-all duration-300 ${isLangOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-2 invisible'}`}>
+                  <div className="bg-black/95 backdrop-blur-xl rounded-2xl p-3 border border-white/10 shadow-2xl min-w-[80px] flex flex-col items-center gap-4">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors border border-white/5" onClick={() => setIsLangOpen(false)}>
+                      <span className="text-[12px] font-black text-white/70">FR</span>
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center cursor-pointer border border-accent/40 shadow-[0_0_15px_rgba(99,102,241,0.3)]" onClick={() => setIsLangOpen(false)}>
+                      <span className="text-[12px] font-black text-white">EN</span>
+                    </div>
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center cursor-pointer hover:bg-white/10 transition-colors border border-white/5" onClick={() => setIsLangOpen(false)}>
+                      <span className="text-[12px] font-black text-white/70">AR</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <div className="hidden md:block">
                 <AnimatedButton href="/contact" className="px-6 py-3 text-[10px]" showIcon>
                   Contact Us
@@ -181,17 +232,16 @@ export default function Navbar() {
 
           {/* Bottom Packs & CTA */}
           <div className={`flex flex-col items-center gap-6 pt-10 border-t border-white/10 w-full max-w-[280px] transition-all duration-700 delay-700 ${isOpen ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="flex gap-6">
-              {packs.map((p) => (
-                <Link 
-                  key={p.name} 
-                  href={p.href} 
-                  onClick={() => setIsOpen(false)} 
-                  className="text-[11px] font-black uppercase tracking-widest text-white/40 hover:text-white"
-                >
-                  {p.name.split(' ')[1]}
-                </Link>
-              ))}
+            <div className="flex gap-4 items-center mb-4">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/5">
+                <span className="text-[11px] font-black text-white/70">FR</span>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-accent/20 border border-accent/40 flex items-center justify-center shadow-[0_0_10px_rgba(99,102,241,0.2)]">
+                <span className="text-[11px] font-black text-white">EN</span>
+              </div>
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/5">
+                <span className="text-[11px] font-black text-white/70">AR</span>
+              </div>
             </div>
             <AnimatedButton href="/contact" className="px-12 py-5 text-sm w-full text-center" onClick={() => setIsOpen(false)}>
               CONTACT US

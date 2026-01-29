@@ -19,7 +19,7 @@ export default function SectionWrapper({
     <section 
       id={id}
       data-bgcolor={bgColor} 
-      className={`relative min-h-screen py-20 px-6 md:px-12 ${className}`}
+      className={`relative py-24 md:py-32 px-6 md:px-12 ${className}`}
     >
       <div className="max-w-[1400px] mx-auto">
         {children}
