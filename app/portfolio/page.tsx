@@ -32,10 +32,11 @@ export default function PortfolioPage() {
 
       {/* Header */}
       <div className="text-center mb-20 relative z-10">
-        <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-none mb-6">
-          NOS <span className="text-gradient italic">RÉALISATIONS.</span>
+        <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Succès & Réalisations</span>
+        <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
+          NOS <span className="text-gradient italic font-script lowercase">réalisations.</span>
         </h1>
-        <p className="font-script text-2xl text-white/40 max-w-xl mx-auto lowercase">
+        <p className="text-gray-400 font-medium text-lg max-w-2xl mx-auto">
           Plus qu'un simple code, une expérience digitale complète.
         </p>
       </div>

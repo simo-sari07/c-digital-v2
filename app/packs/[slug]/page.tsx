@@ -116,9 +116,8 @@ export default function PackPage() {
       <main className="relative z-10 pt-44 px-6 max-w-[90rem] mx-auto">
         <div className="text-center mb-24">
           <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Tarification Transparente</span>
-          <h1 className="text-6xl md:text-[120px] font-black uppercase tracking-tighter leading-none mb-4">
-            {pack.title.split(' ')[0]} <br />
-            <span className="text-gradient italic font-script lowercase tracking-normal">{pack.title.split(' ')[1]}s.</span>
+          <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
+            {pack.title.split(' ')[0]} <span className="text-gradient italic font-script lowercase tracking-normal">{pack.title.split(' ')[1]}s.</span>
           </h1>
           <p className="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl font-medium">
             Investissez dans des solutions de haute performance conçues pour maximiser votre retour sur investissement.

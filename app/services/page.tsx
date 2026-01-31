@@ -66,7 +66,7 @@ export default function ServicesPage() {
         {/* SEO Header */}
         <div className="text-center mb-40">
           <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Expertise Digitale Premium</span>
-          <h1 className="text-6xl md:text-[110px] font-black uppercase tracking-tighter leading-none mb-8">
+          <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
             NOS <span className="text-gradient italic font-script lowercase">services.</span>
           </h1>
           <p className="max-w-3xl mx-auto text-gray-400 text-lg leading-relaxed">

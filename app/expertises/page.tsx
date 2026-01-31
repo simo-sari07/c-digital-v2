@@ -78,15 +78,17 @@ export default function ExpertisesPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-24"
-        >
-          <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-4 leading-none">
-            NOTRE PALETTE <br />
-            <span className="text-gradient italic lowercase font-serif">Technologique.</span>
+         >
+         <div className="mb-24 text-center">
+          <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Notre Savoir-Faire</span>
+          <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
+            NOTRE PALETTE <br className="md:hidden" />
+            <span className="text-gradient italic font-script lowercase">technologique.</span>
           </h1>
-          <p className="text-gray-400 font-medium text-lg max-w-2xl">
+          <p className="text-gray-400 font-medium text-lg max-w-2xl mx-auto">
             Maîtrise des outils de pointe pour des solutions digitales robustes, scalables et innovantes.
           </p>
+        </div>
         </motion.div>
 
         <div className="space-y-40">

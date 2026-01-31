@@ -44,9 +44,9 @@ export default function AboutPage() {
             <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">
               Premium Services & Support
             </span>
-            <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8">
+            <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
               À PROPOS DE <br />
-              <span className="text-gradient italic font-script lowercase">C-Digital.</span>
+              <span className="text-gradient italic font-script lowercase">c-digital.</span>
             </h1>
             <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg">
               Chez C-Digital, nous combinons créativité et stratégies basées sur les données pour aider votre entreprise à prospérer en ligne. Notre équipe d’experts se consacre à fournir des solutions de marketing numérique sur mesure qui génèrent des résultats.

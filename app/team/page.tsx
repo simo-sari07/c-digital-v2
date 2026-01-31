@@ -128,11 +128,12 @@ export default function TeamPage() {
         
         {/* Title */}
         <div className="mb-32">
-          <h1 className="text-6xl md:text-[100px] font-black uppercase tracking-tighter leading-[0.85]">
+          <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">L'Experts à Votre Service</span>
+          <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-tight">
             <div className="overflow-hidden inline-block md:block">
               <span className="reveal-text block">L'ARCHITECTURE</span>
             </div>
-            <span className="team-script font-script text-accent lowercase block mt-4">humaine.</span>
+            <span className="team-script font-script text-accent lowercase block">humaine.</span>
           </h1>
         </div>
 
