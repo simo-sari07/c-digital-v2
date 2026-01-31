@@ -1,0 +1,356 @@
+{
+  "navbar": {
+    "services": "Services",
+    "expertises": "Expertises",
+    "portfolio": "Portfolio",
+    "about": "À Propos",
+    "team": "Équipe",
+    "blog": "Le Blog",
+    "cta": "Contactez-nous"
+  },
+  "common": {
+    "next_step": "Étape Suivante",
+    "back": "Retour",
+    "send": "Envoyer",
+    "loading": "Chargement..."
+  },
+  "hero": {
+    "badge": "Agence Digitale Next-Gen",
+    "title_1": "Nous",
+    "title_2": "Construisons",
+    "title_3": "des Expériences",
+    "title_4": "Digitales qui",
+    "title_convert": "Convertissent",
+    "services": ["Développement Web", "Apps Mobiles", "Marketing Digital", "Design UI/UX"],
+    "description": "Élevez votre marque avec des stratégies basées sur les données et un design de pointe. Nous transformons vos idées complexes en réalités numériques fluides.",
+    "btn_get_started": "Commencer",
+    "btn_view_work": "Notre Travail"
+  },
+  "about_preview": {
+    "badge": "Services Premium & Support",
+    "title_main": "À PROPOS DE",
+    "title_italic": "C-Digital.",
+    "description": "Chez C-Digital, nous combinons créativité et stratégies basées sur les données pour aider votre entreprise à prospérer en ligne. Notre équipe d'experts se consacre à fournir des solutions de marketing numérique sur mesure qui génèrent des résultats.",
+    "mission": {
+      "title": "Notre Mission",
+      "text": "Bâtir des écosystèmes numériques qui propulsent votre marque."
+    },
+    "who": {
+      "title": "Qui nous sommes",
+      "text": "Une équipe d'architectes digitaux et de designers passionnés."
+    },
+    "btn_more": "En savoir plus",
+    "stats": [
+      { "label": "Projets Réalisés", "value": "150+" },
+      { "label": "Clients Satisfaits", "value": "98%" }
+    ]
+  },
+  "why_us": {
+    "badge": "POURQUOI C-DIGITAL",
+    "title_main": "Concepts",
+    "title_script": "Précis",
+    "title_sub": "Résultats Impitoyables.",
+    "description": "Nous combinons stratégie, design et technologie pour construire des écosystèmes numériques qui dominent votre marché.",
+    "features": [
+      {
+        "title": "Approche Axée sur la Stratégie",
+        "desc": "Chaque projet commence par une découverte et des objectifs clairs afin que nous puissions concevoir des solutions qui génèrent des résultats commerciaux tangibles."
+      },
+      {
+        "title": "Livraison de Bout en Bout",
+        "desc": "Du concept et du design au développement, au lancement et à l'optimisation, nous gérons le cycle de vie numérique complet."
+      },
+      {
+        "title": "Collaboration Transparente",
+        "desc": "Communication claire, délais réalistes et rapports accessibles vous tiennent informé à chaque étape."
+      },
+      {
+        "title": "Performance & Évolutivité",
+        "desc": "Nous concevons des solutions numériques qui fonctionnent aujourd'hui et évoluent avec votre entreprise demain."
+      }
+    ]
+  },
+  "services_preview": {
+    "title_main": "Les Seuls",
+    "title_script": "Services",
+    "title_sub": "Dont Vous Aurez Besoin",
+    "view_all": "Voir tous les services",
+    "items": [
+      { "title": "Développement Web Sur Mesure", "desc": "Performance, Scalabilité & Sécurité" },
+      { "title": "Applications Mobiles iOS & Android", "desc": "Votre Business à portée de main" },
+      { "title": "Production Media & Shooting", "desc": "L'image de marque en mouvement" },
+      { "title": "Design UI/UX & Web Design", "desc": "Expérience Utilisateur Immersive." },
+      { "title": "Rédaction & Stratégie de Contenu", "desc": "Le cerveau de votre succès réside dans votre message." },
+      { "title": "SEO & Stratégie Digitale", "desc": "Dominez les Résultats de Recherche" }
+    ]
+  },
+  "tech_stack": {
+    "title_main": "NOTRE",
+    "title_script": "STACK",
+    "title_sub": "TECHNIQUE",
+    "description": "Nous utilisons les meilleures technologies pour créer des expériences numériques performantes et évolutives."
+  },
+  "testimonials": {
+    "title_main": "Les Seuls",
+    "title_script": "Témoignages",
+    "title_sub": "Dont Vous Aurez Besoin",
+    "description": "Rejoignez des centaines de clients satisfaits qui ont transformé leur vision numérique avec C-Digital.",
+    "categories": {
+      "design": "Qualité du Design",
+      "support": "Service Client",
+      "features": "Disponibilité des Fonctionnalités",
+      "docs": "Qualité de la Documentation",
+      "custom": "Personnalisation"
+    },
+    "quotes": {
+      "eduard": "Super thème, super équipe ! Merci beaucoup pour le thème et pour la résolution rapide du problème.",
+      "juan": "Excellent support client, très rapide et efficace. Je recommande à 10/10 !",
+      "masood": "Ce thème est incroyable, il suffit de bien apprendre la personnalisation. Leur équipe de support est très coopérative.",
+      "luigi": "Merci beaucoup ! J'apprécie, vous avez un thème 5 étoiles. Ça en vaut vraiment la peine !",
+      "shykeys": "Des templates vraiment bien conçus. Bien documentés. J'attends avec impatience le thème WordPress.",
+      "masood_flex": "Flexibilité extrême et facile à personnaliser.",
+      "shykeys_easy": "Facile à utiliser et un service client très efficace."
+    }
+  },
+  "contact_section": {
+    "badge": "Prêt à passer à l'échelle ?",
+    "title_main": "DÉMARREZ UN",
+    "title_italic": "Projet avec nous.",
+    "steps": ["IDENTITÉ", "BESOINS", "MESSAGE"],
+    "form": {
+      "full_name": "Nom Complet",
+      "email": "Email Pro",
+      "phone": "Téléphone",
+      "placeholder_name": "Mohamed Karim",
+      "placeholder_message": "Comment pouvons-nous vous aider ?",
+      "btn_next": "Étape Suivante",
+      "btn_back": "Retour",
+      "btn_send": "Envoyer"
+    },
+    "popup": {
+      "success_title": "Message Envoyé",
+      "success_text": "Merci! Notre équipe reviendra vers vous très vite.",
+      "error_title": "Erreur",
+      "btn_close": "Fermer"
+    }
+  },
+  "services_page": {
+    "badge": "Expertise Digitale Premium",
+    "title_main": "NOS",
+    "title_italic": "services.",
+    "description": "Découvrez notre expertise et nos services sur mesure conçus pour propulser votre entreprise vers de nouveaux sommets digitaux.",
+    "cta_button": "Parler de votre projet",
+    "list": [
+      {
+        "title": "Développement Web Sur Mesure",
+        "tagline": "Performance, Scalabilité & Sécurité",
+        "desc": "Le backend est le cerveau derrière le succès de votre projet, assurant stabilité et performance pour propulser votre plateforme vers l'avant. Nous concevons des applications web robustes utilisant Next.js et Laravel pour garantir une expérience utilisateur fluide et une rapidité de chargement optimale.",
+        "features": ["Applications Web Progressives (PWA)", "Systèmes de gestion de contenu (CMS)", "E-commerce & Plateformes SaaS", "Optimisation Core Web Vitals"]
+      },
+      {
+        "title": "Applications Mobiles iOS & Android",
+        "tagline": "Votre Business à portée de main",
+        "desc": "Nous développons des applications mobiles exceptionnelles associant performances et design attrayant. En utilisant des technologies comme React Native et Kotlin, nous créons des interfaces intuitives qui captivent vos utilisateurs.",
+        "features": ["Développement iOS & Android Natif", "Cross-platform (React Native/Expo)", "Maintenance Applicative", "Intégration d'API tierces"]
+      },
+      {
+        "title": "Production Media & Shooting",
+        "tagline": "L'image de marque en mouvement",
+        "desc": "La magie visuelle qui captive passe par une production de haute qualité. Nous réalisons des shootings photo professionnels et des productions vidéo (reels, publicités, corpo) qui reflètent l'identité de votre marque.",
+        "features": ["Shooting Photo Professionnel", "Production Vidéo & Reels", "Montage & Motion Graphics", "Post-production & Color Grading"]
+      },
+      {
+        "title": "Design UI/UX & Web Design",
+        "tagline": "Expérience Utilisateur Immersive",
+        "desc": "Nous créons la magie visuelle qui captive vos visiteurs avec des interfaces intuitives et esthétiques. Chaque pixel est pensé pour refléter l'identité de votre marque tout en facilitant le parcours de l'utilisateur.",
+        "features": ["Wireframing & Prototypage", "Design d'interface (UI) moderne", "Audit d'expérience utilisateur (UX)", "Charte graphique & Branding"]
+      },
+      {
+        "title": "Rédaction & Stratégie de Contenu",
+        "tagline": "Les mots qui vendent",
+        "desc": "Le cerveau de votre succès réside aussi dans votre message. Nos rédacteurs et copywriters créent des contenus percutants qui captivent votre audience et optimisent votre SEO structurel.",
+        "features": ["Copywriting Publicitaire", "Rédaction d'Articles SEO", "Storytelling de Marque", "Scripts Vidéo & Scénarios"]
+      },
+      {
+        "title": "SEO & Stratégie Digitale",
+        "tagline": "Dominez les Résultats de Recherche",
+        "desc": "L'IA est au service de votre croissance grâce à des algorithmes intelligents qui améliorent vos performances. Notre expertise en SEO technique et sémantique permet à votre marque de gagner en visibilité sur Google.",
+        "features": ["Audit SEO technique", "Netlinking & Backlinks", "Analyse de données", "Campagnes SEA / Google Ads"]
+      }
+    ]
+  },
+  "expertises_page": {
+    "badge": "Notre Savoir-Faire",
+    "title_main": "NOTRE PALETTE",
+    "title_italic": "technologique.",
+    "description": "Maîtrise des outils de pointe pour des solutions digitales robustes, scalables et innovantes.",
+    "sections": [
+      {
+        "title": "BACKEND",
+        "desc": "Le cerveau derrière le succès de votre projet. Stabilité, sécurité et performance : notre Backend propulse votre plateforme vers l'avant."
+      },
+      {
+        "title": "FRONTEND",
+        "desc": "La magie visuelle qui captive. Interfaces intuitives et esthétiques pour une expérience utilisateur mémorable."
+      },
+      {
+        "title": "APPLICATION MOBILE",
+        "desc": "Votre Business à portée de main. Des applications iOS et Android exceptionnelles, associant performances et design attrayant."
+      },
+      {
+        "title": "E-COMMERCE & CMS",
+        "desc": "Solutions e-commerce sur mesure. Spécialistes Shopify et Webflow pour une présence en ligne percutante."
+      },
+      {
+        "title": "OUTILS DEVOPS & QA",
+        "desc": "L'efficacité à son meilleur. Des outils qui automatisent les processus et garantissent la perfection à chaque étape."
+      }
+    ]
+  },
+  "portfolio_page": {
+    "badge": "Succès & Réalisations",
+    "title_main": "NOS",
+    "title_italic": "réalisations.",
+    "description": "Plus qu'un simple code, une expérience digitale complète.",
+    "categories": {
+      "all": "TOUT",
+      "web": "WEB",
+      "branding": "BRANDING",
+      "seo": "SEO",
+      "content": "CONTENU"
+    },
+    "card_badge": "Expérience Digitale",
+    "tagline": "C-DIGITAL • L'Art de Dominer le Marché par l'Innovation"
+  },
+  "about_page": {
+    "badge": "Services Premium & Support",
+    "title_main": "À PROPOS DE",
+    "title_italic": "c-digital.",
+    "description": "Chez C-Digital, nous combinons créativité et stratégies basées sur les données pour aider votre entreprise à prospérer en ligne. Notre équipe d'experts se consacre à fournir des solutions de marketing numérique sur mesure qui génèrent des résultats.",
+    "cta_button": "Découvrir notre travail",
+    "since": "Depuis",
+    "stats": [
+      { "label": "Projets Réalisés", "value": "150+" },
+      { "label": "Clients Satisfaits", "value": "98%" },
+      { "label": "Années d'Expérience", "value": "8+" },
+      { "label": "Experts Dédiés", "value": "12" }
+    ],
+    "mission": {
+      "title": "NOTRE MISSION",
+      "text": "Votre parcours digital commence ici. Nous ne nous contentons pas de créer des sites web ; nous bâtissons des écosystèmes numériques qui propulsent votre marque. Plongez dans l'expertise C.digital pour transformer chaque interaction en une opportunité de croissance."
+    },
+    "who": {
+      "title": "QUI NOUS SOMMES ?",
+      "text": "Une équipe d'architectes digitaux, de designers passionnés et de stratèges data-driven. Nous croyons que la technologie doit être invisible pour laisser place à l'expérience utilisateur. C-Digital est le pont entre votre vision et la réalité numérique."
+    },
+    "values_section": {
+      "title": "NOS VALEURS FONDAMENTALES",
+      "subtitle": "L'ADN de notre agence",
+      "items": [
+        {
+          "title": "Créativité Illimitée",
+          "desc": "Nous repoussons les limites du design pour créer des expériences uniques."
+        },
+        {
+          "title": "Stratégie Data-Driven",
+          "desc": "Chaque décision est basée sur des données réelles pour maximiser votre ROI."
+        },
+        {
+          "title": "Engagement Total",
+          "desc": "Votre succès est notre priorité absolue. Nous sommes vos partenaires, pas seulement des prestataires."
+        }
+      ]
+    }
+  },
+  "team_page": {
+    "badge": "L'Experts à Votre Service",
+    "title_main": "L'ARCHITECTURE",
+    "title_italic": "humaine.",
+    "roles": {
+      "ceo": "CEO & FONDATEUR",
+      "lead_tech": "LEAD TECH",
+      "assistant": "ASSISTANTE EXECUTIVE",
+      "dev": "DÉVELOPPEUR FULL STACK",
+      "devops": "DEVOPS & FULLSTACK",
+      "content": "CRÉATEUR DE CONTENU",
+      "video": "MONTEUR VIDÉO"
+    }
+  },
+  "packs_page": {
+    "badge": "Tarification Transparente",
+    "description": "Investissez dans des solutions de haute performance conçues pour maximiser votre retour sur investissement.",
+    "popular": "Plus Populaire",
+    "starting_at": "À partir de",
+    "unit": "MAD / HT",
+    "btn_launch": "Lancer mon Projet",
+    "btn_quote": "Demander un Devis",
+    "not_found": "Le pack \"{slug}\" n'existe pas.",
+    "data": {
+      "web": {
+        "title": "Pack Web",
+        "plans": [
+          { "name": "Starter", "price": "1 999", "features": ["Landing Page (One-page)", "Design Mobile First", "WhatsApp Integration", "Hébergement Inclus (1 an)", "Certificat SSL Gratuit", "Nom de domaine .com"] },
+          { "name": "Business", "price": "4 999", "features": ["Site Multipage (5-7 pages)", "Blog / Section News", "SEO On-page Basique", "Panneau d'administration", "Support 24/7 (3 mois)", "Nom de domaine .com"] },
+          { "name": "E-Commerce", "price": "9 999", "features": ["Boutique en ligne complète", "Paiements (CMI, Stripe, PayPal)", "Gestion Stock & Commandes", "Formation à l'outil", "Sécurité Bancaire Avancée", "Nom de domaine .com"] },
+          { "name": "Sur Mesure", "price": "Contactez-nous", "features": ["Applications Web Complexes", "Systèmes SaaS Personnalisés", "Intégration API Tierces", "Maintenance VIP Dédiée", "Évolutivité Illimitée"] }
+        ]
+      },
+      "seo": {
+        "title": "Pack SEO",
+        "plans": [
+          { "name": "Standard", "price": "1 249", "features": ["Audit Technique SEO", "Mots-clés (5 ciblés)", "Optimisation Google My Business", "Rapport de Performance Mensuel"] },
+          { "name": "SEO Pro", "price": "3 999", "features": ["Stratégie de Contenu (Blog)", "Audit Concurrentiel Profond", "Backlinks de Qualité (3/mois)", "Optimisation Vitesse (Core Vitals)"] },
+          { "name": "Ultimate SEO", "price": "6 699", "features": ["Domination de Niche", "SEO Local & National Intensif", "Rédaction Contenu Premium", "Suivi Positionnement Temps Réel"] }
+        ]
+      },
+      "video": {
+        "title": "Pack Vidéo",
+        "plans": [
+          { "name": "Social Starter", "price": "2 499", "features": ["2 Vidéos Reels / TikTok", "Montage Dynamique", "Musique Trend Incluse", "Format Vertical HD"] },
+          { "name": "Creative Pro", "price": "5 499", "features": ["4 Vidéos (Reels + Corporate)", "Motion Design de base", "Étalonnage (Color Grading)", "Scriptwriting & Storyboard"] },
+          { "name": "Cinematic Elite", "price": "10 999", "features": ["Publicité TV / Cinéma", "Motion Graphics 3D", "Prises de vue Drone 4K", "Direction Artistique Complète"] }
+        ]
+      }
+    }
+  },
+  "footer": {
+    "tagline_main": "L'ART DE",
+    "tagline_highlight": "DOMINER",
+    "tagline_end": "LE MARCHÉ.",
+    "cta": {
+      "title": "WANT TO GET STARTED?",
+      "desc": "Plongez dans l'excellence avec notre équipe. Des créatifs passionnés prêts à propulser votre projet vers de nouveaux sommets.",
+      "btn": "DISCUTER"
+    },
+    "expertises": {
+      "title": "EXPERTISES",
+      "items": ["Création de Sites", "E-Commerce Pro", "Apps Mobiles", "Stratégie SEO", "Identité Visuelle"]
+    },
+    "agency": {
+      "title": "AGENCE",
+      "items": ["Notre ADN", "Notre Équipe", "Réalisations", "Packs Elite", "Contact Direct"]
+    },
+    "contact": {
+      "title": "CONTACT",
+      "support": "SUPPORT LIGNE",
+      "email_label": "EMAIL"
+    },
+    "location": {
+      "address": "48 Lot IGUIDER Allal El Fasi Marrakech",
+      "btn_map": "VOIR SUR LA CARTE"
+    },
+    "bottom": {
+      "rights": "TOUS DROITS RÉSERVÉS.",
+      "links": ["CONFIDENTIALITÉ", "LÉGAL", "CONDITIONS", "COOKIES"],
+      "protocol": "PROTOCOLE SÉCURISÉ"
+    }
+  },
+  "whatsapp": {
+    "title": "Contactez-nous",
+    "status": "En ligne maintenant",
+    "description": "Besoin d'aide ? Cliquez ci-dessous pour démarrer une conversation sur WhatsApp.",
+    "role": "Support Client",
+    "tooltip_title": "Besoin d'aide ?",
+    "tooltip_sub": "Contactez-nous ici"
+  }
+}

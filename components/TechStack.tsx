@@ -1,8 +1,14 @@
 'use client';
 
+import React, { useState, useEffect } from 'react';
 import SectionTitle from './SectionTitle';
+// Imports dial les fichiers JSON
+import fr from '@/locales/fr.json';
+import en from '@/locales/en.json';
 
-// --- Data ---
+const dictionaries: any = { fr, en };
+
+// --- Data (Intact) ---
 const ICON_ROWS = [
     [
         { name: 'Next.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
@@ -11,7 +17,6 @@ const ICON_ROWS = [
         { name: 'Tailwind', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
         { name: 'GSAP', icon: 'https://cdn.prod.website-files.com/67a1f290f2efe04ef2447e11/67a1f290f2efe04ef2447e85_gsap.svg' },
         { name: 'Framer', icon: 'https://www.vectorlogo.zone/logos/framer/framer-icon.svg' },
-        { name: 'Three.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg' },
         { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
         { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
         { name: 'Django', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
@@ -25,7 +30,7 @@ const ICON_ROWS = [
         { name: 'Supabase', icon: 'https://www.vectorlogo.zone/logos/supabase/supabase-icon.svg' },
         { name: 'Prisma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg' },
         { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-        { name: 'Kubernetes', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
+        { name: 'Kubernetes', icon: 'https://cdn.jsdelivr.gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
         { name: 'GitHub', icon: 'https://www.vectorlogo.zone/logos/github/github-icon.svg' },
         { name: 'React Native', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
         { name: 'Flutter', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg' },
@@ -53,7 +58,6 @@ const TechIcon = ({ tech }: { tech: { name: string, icon: string } }) => (
 const MarqueeRow = ({ items, reverse = false }: { items: typeof ICON_ROWS[0], reverse?: boolean }) => (
     <div className="flex gap-4 group overflow-hidden">
         <div className={`flex gap-4 whitespace-nowrap ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}>
-            {/* Repeated 4 times to ensure seamless loop on even the largest screens */}
             {[...items, ...items, ...items, ...items].map((tech, i) => (
                 <TechIcon key={`${tech.name}-${i}`} tech={tech} />
             ))}
@@ -64,21 +68,39 @@ const MarqueeRow = ({ items, reverse = false }: { items: typeof ICON_ROWS[0], re
 // --- Main Component ---
 
 export default function TechStack() {
+    const [lang, setLang] = useState('en');
+    const [mounted, setMounted] = useState(false);
+
+    // 1. Logic dial Language Detection
+    useEffect(() => {
+        setMounted(true);
+        const updateLang = () => {
+            setLang(document.documentElement.lang || 'en');
+        };
+        updateLang();
+        const observer = new MutationObserver(updateLang);
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+        return () => observer.disconnect();
+    }, []);
+
+    const t = dictionaries[lang]?.tech_stack || dictionaries.en.tech_stack;
+
+    if (!mounted) return null;
+
     return (
-        <section id="stack" data-bgcolor="#111111" className="bg-black py-24 md:py-32 overflow-hidden w-full relative">
-            {/* Title & Description */}
+        <section id="stack" data-bgcolor="#111111" className="bg-black py-24 md:py-32 overflow-hidden w-full relative font-sans">
+            {/* Title & Description (Dynamique mn JSON) */}
             <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-20 relative z-30">
                 <SectionTitle>
-                    NOTRE <span className="font-script text-violet-400 normal-case">STACK</span> TECHNIQUE
+                    {t.title_main} <span className="font-script text-violet-400 normal-case">{t.title_script}</span> {t.title_sub}
                 </SectionTitle>
                 <p className="text-white/60 max-w-2xl mx-auto mt-6 text-base md:text-lg font-medium leading-relaxed">
-                    Nous utilisons les meilleures technologies pour créer des expériences numériques performantes et évolutives.
+                    {t.description}
                 </p>
             </div>
 
             {/* Scrolling Grid */}
             <div className="flex flex-col gap-6 relative w-full">
-                {/* Visual Depth Masks */}
                 <div className="absolute inset-y-0 left-0 w-[15%] md:w-[25%] bg-gradient-to-r from-black via-black/80 to-transparent z-20 pointer-events-none" />
                 <div className="absolute inset-y-0 right-0 w-[15%] md:w-[25%] bg-gradient-to-l from-black via-black/80 to-transparent z-20 pointer-events-none" />
 

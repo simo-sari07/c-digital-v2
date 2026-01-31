@@ -1,168 +1,107 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// Imports dial les fichiers JSON
+import fr from '@/locales/fr.json';
+import en from '@/locales/en.json';
 
-// --- Hicham, hna fin t-7et les liens dyal les images mn l-cloud ---
-const teamData = {
-  leader: { 
-    name: "Hicham Mhammedi", 
-    role: "CEO & FONDATEUR", 
-    img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433025/WhatsApp_Image_2026-01-26_at_14.09.55_hs9tin.jpg" 
-  },
-  managers: [
-    { 
-      name: "Salih", 
-      role: "LEAD TECH", 
-      img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433026/WhatsApp_Image_2026-01-26_at_13.13.40_6_qvzvte.jpg",
-      subTeam: [
-        { name: "Hassan Moassar", role: "FULL STACK DEV", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433028/WhatsApp_Image_2026-01-26_at_13.13.40_4_m801rm.jpg" },
-        { name: "El Mehdi El Fatimy ", role: "FULL STACK DEV", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433046/WhatsApp_Image_2026-01-26_at_13.13.40_1_oakctp.jpg" },
-        { name: "Mohamed Ibaa Ali", role: "FULL STACK DEV", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433025/WhatsApp_Image_2026-01-26_at_13.13.40_7_r40fkz.jpg" },
-        { name: "Mohamed Sari", role: "FULL STACK DEV", img: "https://res.cloudinary.com/da63nggkh/image/upload/v1769570129/1769569640458-019c0291-7902-7f67-bd83-5bc5763bb76d_u0fxsf.png" },
-        { name: "Asma Bendalh", role: "FULL STACK DEV", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769434889/WhatsApp_Image_2026-01-26_at_14.35.16_ayx2sp.jpg" },
-        { name: "Mohamedkarim Kribi", role: "DEVOPS & FULLSTACK", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433045/WhatsApp_Image_2026-01-26_at_13.13.40_2_s1bppg.jpg" }
-      ]
-    },
-    { 
-      name: "Hiba Ennajjar", 
-      role: "EXECUTIVE ASSISTANT", 
-      img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433029/WhatsApp_Image_2026-01-26_at_13.13.40_3_hnswyk.jpg",
-      subTeam: [
-        { name: "Anas El Aarsaoui", role: "CONTENT CREATOR", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433026/WhatsApp_Image_2026-01-26_at_13.13.40_5_duqxud.jpg" },
-        { name: "Othmane", role: "VIDEO EDITOR", img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769446448/WhatsApp_Image_2026-01-26_at_17.53.15_ewusl2.jpg" }
-      ]
-    }
-  ]
-};
+const dictionaries: any = { fr, en };
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function TeamPage() {
+  const [lang, setLang] = useState('en');
+  const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
-
-      // Cinematic Grid Zoom-out
-      tl.from(gridRef.current, {
-        scale: 1.2,
-        opacity: 0,
-        duration: 2,
-        ease: "power3.out"
-      }, 0);
-
-      // Masked Title reveal
-      tl.from(".reveal-text", {
-        yPercent: 100,
-        duration: 1.2,
-        stagger: 0.1,
-        ease: "power4.out",
-        skewY: 5
-      }, 0.4)
-      .from(".team-script", {
-        opacity: 0,
-        scale: 0.5,
-        duration: 1,
-        ease: "back.out(2)"
-      }, "-=0.8");
-
-      // Dynamic Background Auras
-      tl.from(".bg-aura", {
-        opacity: 0,
-        scale: 0.2,
-        duration: 2,
-        stagger: 0.3,
-        ease: "power2.out"
-      }, 0.2);
-
-      // Card staggered entrances
-      gsap.from(".team-card", {
-        y: 80,
-        opacity: 0,
-        scale: 0.9,
-        duration: 1,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".tree-container",
-          start: "top 85%"
-        }
-      });
-
-      // Connector line drawing (Energy flow)
-      gsap.from(".connector-line", {
-        scaleY: 0,
-        opacity: 0,
-        transformOrigin: "top center",
-        duration: 1.2,
-        ease: "power2.inOut",
-        stagger: 0.15,
-        delay: 0.8
-      });
-
-      gsap.from(".connector-horizontal", {
-        scaleX: 0,
-        opacity: 0,
-        transformOrigin: "center center",
-        duration: 1.2,
-        ease: "power2.inOut",
-        delay: 1.5
-      });
-
-    }, containerRef);
-
-    return () => ctx.revert();
+    setMounted(true);
+    const updateLang = () => {
+      setLang(document.documentElement.lang || 'en');
+    };
+    updateLang();
+    const observer = new MutationObserver(updateLang);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    return () => observer.disconnect();
   }, []);
 
+  const t = dictionaries[lang]?.team_page || dictionaries.en.team_page;
+
+  // Re-mapping dial l-team data bach n-sta3mlo les rôles mn l-JSON
+  const teamData = {
+    leader: { name: "Hicham Mhammedi", role: t.roles.ceo, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433025/WhatsApp_Image_2026-01-26_at_14.09.55_hs9tin.jpg" },
+    managers: [
+      { 
+        name: "Salih", role: t.roles.lead_tech, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433026/WhatsApp_Image_2026-01-26_at_13.13.40_6_qvzvte.jpg",
+        subTeam: [
+          { name: "Hassan Moassar", role: t.roles.dev, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433028/WhatsApp_Image_2026-01-26_at_13.13.40_4_m801rm.jpg" },
+          { name: "El Mehdi El Fatimy", role: t.roles.dev, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433046/WhatsApp_Image_2026-01-26_at_13.13.40_1_oakctp.jpg" },
+          { name: "Mohamed Ibaa Ali", role: t.roles.dev, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433025/WhatsApp_Image_2026-01-26_at_13.13.40_7_r40fkz.jpg" },
+          { name: "Mohamed Sari", role: t.roles.dev, img: "https://res.cloudinary.com/da63nggkh/image/upload/v1769570129/1769569640458-019c0291-7902-7f67-bd83-5bc5763bb76d_u0fxsf.png" },
+          { name: "Asma Bendalh", role: t.roles.dev, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769434889/WhatsApp_Image_2026-01-26_at_14.35.16_ayx2sp.jpg" },
+          { name: "Mohamedkarim Kribi", role: t.roles.devops, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433045/WhatsApp_Image_2026-01-26_at_13.13.40_2_s1bppg.jpg" }
+        ]
+      },
+      { 
+        name: "Hiba Ennajjar", role: t.roles.assistant, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433029/WhatsApp_Image_2026-01-26_at_13.13.40_3_hnswyk.jpg",
+        subTeam: [
+          { name: "Anas El Aarsaoui", role: t.roles.content, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433026/WhatsApp_Image_2026-01-26_at_13.13.40_5_duqxud.jpg" },
+          { name: "Othmane", role: t.roles.video, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769446448/WhatsApp_Image_2026-01-26_at_17.53.15_ewusl2.jpg" }
+        ]
+      }
+    ]
+  };
+
+  useEffect(() => {
+    if (!mounted) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+      tl.from(gridRef.current, { scale: 1.2, opacity: 0, duration: 2, ease: "power3.out" }, 0);
+      tl.from(".reveal-text", { yPercent: 100, duration: 1.2, stagger: 0.1, ease: "power4.out", skewY: 5 }, 0.4)
+        .from(".team-script", { opacity: 0, scale: 0.5, duration: 1, ease: "back.out(2)" }, "-=0.8");
+      
+      gsap.from(".team-card", { 
+        y: 80, opacity: 0, scale: 0.9, duration: 1, stagger: 0.1, ease: "power3.out",
+        scrollTrigger: { trigger: ".tree-container", start: "top 85%" }
+      });
+    }, containerRef);
+    return () => ctx.revert();
+  }, [mounted, lang]);
+
+  if (!mounted) return null;
+
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-background overflow-hidden pb-40 pt-44">
+    <div ref={containerRef} className="relative min-h-screen bg-black overflow-hidden pb-40 pt-44 font-sans text-white">
       <div ref={gridRef} className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
       
-      {/* Dynamic Background Auras */}
-      <div className="bg-aura absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full animate-pulse" />
-      <div className="bg-aura absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary/5 blur-[120px] rounded-full animate-pulse-slow" />
-
       <main className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
-        
-        {/* Title */}
         <div className="mb-32">
-          <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">L'Experts à Votre Service</span>
+          <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">{t.badge}</span>
           <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-tight">
-            <div className="overflow-hidden inline-block md:block">
-              <span className="reveal-text block">L'ARCHITECTURE</span>
+            <div className="overflow-hidden md:block">
+              <span className="reveal-text block">{t.title_main}</span>
             </div>
-            <span className="team-script font-script text-accent lowercase block">humaine.</span>
+            <span className="team-script font-script text-accent lowercase block">{t.title_italic}</span>
           </h1>
         </div>
 
-        {/* Tree Container */}
         <div className="tree-container relative w-full flex flex-col items-center">
-          
-          {/* Level 0: CEO */}
-          <div className="mb-40 relative team-card-wrapper">
+          <div className="mb-40 relative">
             <TeamCard member={teamData.leader} size="lg" glow="accent" />
-            {/* Connector Line Down */}
             <div className="connector-line absolute top-full left-1/2 -translate-x-1/2 w-[1.5px] h-40 bg-gradient-to-b from-accent to-secondary/20" />
           </div>
 
-          {/* Level 1 & 2: Managers and their Teams */}
           <div className="grid md:grid-cols-2 gap-20 w-full max-w-6xl relative">
-            {/* Horizontal Connection line between managers */}
-            <div className="connector-horizontal absolute top-[-40px] left-[25%] right-[25%] h-[1.5px] bg-secondary/30 hidden md:block" />
-
             {teamData.managers.map((manager, mIdx) => (
               <div key={mIdx} className="flex flex-col items-center w-full relative">
-                {/* Vertical Connector to manager */}
-                <div className="connector-line absolute top-[-40px] left-1/2 -translate-x-1/2 w-[1.5px] h-10 bg-secondary/30 hidden md:block" />
-                
                 <TeamCard member={manager} size="md" glow="secondary" />
-                
-                {/* Line to sub-team */}
                 <div className="connector-line w-[1px] h-20 bg-white/10 my-10" />
-
-                {/* Sub-Team Grid */}
                 <div className={`grid gap-4 w-full ${manager.subTeam.length > 2 ? 'grid-cols-2 lg:grid-cols-3' : 'grid-cols-2'}`}>
                   {manager.subTeam.map((member, sIdx) => (
                     <TeamCard key={sIdx} member={member} size="sm" />
@@ -182,62 +121,14 @@ function TeamCard({ member, size, glow }: any) {
   const isMd = size === "md";
   const cardRef = useRef<HTMLDivElement>(null);
   
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-    const { left, top, width, height } = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - left) / width;
-    const y = (e.clientY - top) / height;
-    
-    const moveX = (x - 0.5) * 20;
-    const moveY = (y - 0.5) * 20;
-    
-    gsap.to(cardRef.current, {
-      rotateY: moveX,
-      rotateX: -moveY,
-      transformPerspective: 1000,
-      duration: 0.5,
-      ease: "power2.out"
-    });
-  };
-
-  const handleMouseLeave = () => {
-    if (!cardRef.current) return;
-    gsap.to(cardRef.current, {
-      rotateY: 0,
-      rotateX: 0,
-      duration: 0.5,
-      ease: "power2.out"
-    });
-  };
-  
   return (
-    <div 
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="team-card perspective-1000 cursor-pointer"
-    >
-      <div className={`
-        relative group overflow-hidden rounded-[2.5rem] bg-muted/20 border border-white/5 backdrop-blur-xl transition-all duration-500 hover:border-accent/40
-        ${isLg ? 'w-72 h-96' : isMd ? 'w-60 h-80' : 'w-full aspect-[4/5]'}
-      `}>
-        <img 
-          src={member.img || "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1000&auto=format&fit=crop"} 
-          alt={member.name}
-          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 scale-105 group-hover:scale-110"
-        />
-        
+    <div ref={cardRef} className="team-card perspective-1000">
+      <div className={`relative group overflow-hidden rounded-[2.5rem] bg-muted/20 border border-white/5 backdrop-blur-xl transition-all duration-500 hover:border-accent/40 ${isLg ? 'w-72 h-96' : isMd ? 'w-60 h-80' : 'w-full aspect-[4/5]'}`}>
+        <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 scale-105 group-hover:scale-110" />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 text-left">
-          <span className={`text-[8px] font-black uppercase tracking-[0.2em] mb-1 ${glow === 'accent' ? 'text-accent' : 'text-secondary'}`}>
-            {member.role}
-          </span>
-          <h3 className={`${isLg ? 'text-xl' : 'text-[12px]'} font-black uppercase tracking-tight`}>
-            {member.name}
-          </h3>
+          <span className={`text-[8px] font-black uppercase tracking-[0.2em] mb-1 ${glow === 'accent' ? 'text-accent' : 'text-secondary'}`}>{member.role}</span>
+          <h3 className={`${isLg ? 'text-xl' : 'text-[12px]'} font-black uppercase tracking-tight`}>{member.name}</h3>
         </div>
-
-        {/* Hover Light Effect */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity bg-gradient-to-br from-white to-transparent" />
       </div>
     </div>
   );

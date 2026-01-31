@@ -1,0 +1,339 @@
+{
+  "navbar": {
+    "services": "Services",
+    "expertises": "Expertises",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "team": "Team",
+    "blog": "The Blog",
+    "cta": "Contact Us"
+  },
+  "common": {
+    "next_step": "Next Step",
+    "back": "Back",
+    "send": "Send",
+    "loading": "Loading..."
+  },
+  "hero": {
+    "badge": "Next-Gen Digital Agency",
+    "title_1": "We",
+    "title_2": "Build",
+    "title_3": "Digital",
+    "title_4": "Experiences That",
+    "title_convert": "Convert",
+    "services": ["Web Development", "Mobile Apps", "Digital Marketing", "UI/UX Design"],
+    "description": "Elevate your brand with data-driven strategies and cutting-edge design. We turn complex ideas into seamless digital realities.",
+    "btn_get_started": "Get Started",
+    "btn_view_work": "View Our Work"
+  },
+  "about_preview": {
+    "badge": "Premium Services & Support",
+    "title_main": "ABOUT",
+    "title_italic": "C-Digital.",
+    "description": "At C-Digital, we combine creativity and data-driven strategies to help your business thrive online. Our team of experts is dedicated to providing tailored digital marketing solutions that drive results.",
+    "mission": { "title": "Our Mission", "text": "Building digital ecosystems that propel your brand forward." },
+    "who": { "title": "Who we are", "text": "A team of passionate digital architects and designers." },
+    "btn_more": "Learn More",
+    "stats": [
+      { "label": "Projects Completed", "value": "150+" },
+      { "label": "Satisfied Clients", "value": "98%" }
+    ]
+  },
+  "why_us": {
+    "badge": "WHY C-DIGITAL",
+    "title_main": "Precise",
+    "title_script": "Concepts",
+    "title_sub": "Ruthless Results.",
+    "description": "We combine strategy, design, and technology to build digital ecosystems that dominate your market.",
+    "features": [
+      { "title": "Strategy-First Approach", "desc": "Every project begins with discovery and clear goals so we can design solutions that drive tangible business results." },
+      { "title": "End-to-End Delivery", "desc": "From concept and design to development, launch, and optimization, we manage the full digital lifecycle." },
+      { "title": "Transparent Collaboration", "desc": "Clear communication, realistic timelines, and accessible reporting keep you informed at every stage." },
+      { "title": "Performance & Scalability", "desc": "We build digital solutions that perform today and scale with your business tomorrow." }
+    ]
+  },
+  "services_preview": {
+    "title_main": "The Only",
+    "title_script": "Services",
+    "title_sub": "You'll Ever Need",
+    "view_all": "View All Services",
+    "items": [
+      { "title": "Custom Web Development", "desc": "Performance, Scalability & Security" },
+      { "title": "iOS & Android Mobile Apps", "desc": "Your Business at your fingertips" },
+      { "title": "Media Production & Shooting", "desc": "Brand identity in motion" },
+      { "title": "UI/UX & Web Design", "desc": "Immersive User Experience." },
+      { "title": "Copywriting & Content Strategy", "desc": "The brain of your success lies in your message." },
+      { "title": "SEO & Digital Strategy", "desc": "Dominate Search Engine Results" }
+    ]
+  },
+  "tech_stack": {
+    "title_main": "OUR",
+    "title_script": "TECH",
+    "title_sub": "STACK",
+    "description": "We use the best technologies to create high-performance and scalable digital experiences."
+  },
+  "testimonials": {
+    "title_main": "The Only",
+    "title_script": "Testimonials",
+    "title_sub": "You'll Ever Need",
+    "description": "Join hundreds of satisfied clients who have transformed their digital vision with C-Digital.",
+    "categories": {
+      "design": "Design Quality",
+      "support": "Customer Support",
+      "features": "Feature Availability",
+      "docs": "Documentation Quality",
+      "custom": "Customizability"
+    },
+    "quotes": {
+      "eduard": "Cool theme, cool team! Thanks a lot for the theme and quick resolving the issue.",
+      "juan": "Great customer support, very quick and efficient. 10/10 would recommend!",
+      "masood": "This theme is amazing just need to learn customization properly. Their support team is very cooperative.",
+      "luigi": "Thank you very much! I appreciate, you have a 5 star theme. It's really worth it!",
+      "shykeys": "Really well designed templates. Well documented. Looking forward for WordPress theme.",
+      "masood_flex": "Extreme flexibility and easy to customize.",
+      "shykeys_easy": "Easy to use and a very great customer service."
+    }
+  },
+  "contact_section": {
+    "badge": "Ready to scale?",
+    "title_main": "START A",
+    "title_italic": "Project with us.",
+    "steps": ["IDENTITY", "NEEDS", "MESSAGE"],
+    "form": {
+      "full_name": "Full Name",
+      "email": "Work Email",
+      "phone": "Phone",
+      "placeholder_name": "John Doe",
+      "placeholder_message": "How can we help you?",
+      "btn_next": "Next Step",
+      "btn_back": "Back",
+      "btn_send": "Send Now"
+    },
+    "popup": {
+      "success_title": "Message Sent",
+      "success_text": "Thank you! Our team will get back to you very soon.",
+      "error_title": "Error",
+      "btn_close": "Close"
+    }
+  },
+  "services_page": {
+    "badge": "Premium Digital Expertise",
+    "title_main": "OUR",
+    "title_italic": "services.",
+    "description": "Discover our expertise and tailored services designed to propel your business to new digital heights.",
+    "cta_button": "Talk about your project",
+    "list": [
+      {
+        "title": "Custom Web Development",
+        "tagline": "Performance, Scalability & Security",
+        "desc": "The backend is the brain behind your project's success, ensuring stability and performance to push your platform forward. We build robust web applications using Next.js and Laravel to guarantee a seamless user experience.",
+        "features": ["Progressive Web Apps (PWA)", "Content Management Systems (CMS)", "E-commerce & SaaS Platforms", "Core Web Vitals Optimization"]
+      },
+      {
+        "title": "iOS & Android Mobile Apps",
+        "tagline": "Your Business at your fingertips",
+        "desc": "We develop exceptional mobile applications combining performance and attractive design. Using technologies like React Native and Kotlin, we create intuitive interfaces that captivate your users.",
+        "features": ["Native iOS & Android Development", "Cross-platform (React Native/Expo)", "App Maintenance", "Third-party API Integration"]
+      },
+      {
+        "title": "Media Production & Shooting",
+        "tagline": "Brand image in motion",
+        "desc": "Visual magic that captivates comes through high-quality production. We provide professional photo shoots and video productions (reels, ads, corporate) that reflect your brand identity.",
+        "features": ["Professional Photo Shooting", "Video Production & Reels", "Editing & Motion Graphics", "Post-production & Color Grading"]
+      },
+      {
+        "title": "UI/UX & Web Design",
+        "tagline": "Immersive User Experience",
+        "desc": "We create visual magic that captivates your visitors with intuitive and aesthetic interfaces. Every pixel is designed to reflect your brand identity while facilitating the user journey.",
+        "features": ["Wireframing & Prototyping", "Modern UI Design", "UX Audit", "Brand Identity & Branding"]
+      },
+      {
+        "title": "Copywriting & Content Strategy",
+        "tagline": "Words that sell",
+        "desc": "The brain of your success also lies in your message. Our writers and copywriters create impactful content that captivates your audience and optimizes your structural SEO.",
+        "features": ["Advertising Copywriting", "SEO Article Writing", "Brand Storytelling", "Video Scripts & Scenarios"]
+      },
+      {
+        "title": "SEO & Digital Strategy",
+        "tagline": "Dominate Search Results",
+        "desc": "AI serves your growth through intelligent algorithms that improve your performance. Our expertise in technical and semantic SEO allows your brand to gain visibility on Google.",
+        "features": ["Technical SEO Audit", "Netlinking & Backlinks", "Data Analysis", "SEA / Google Ads Campaigns"]
+      }
+    ]
+  },
+  "expertises_page": {
+    "badge": "Our Know-How",
+    "title_main": "OUR TECH",
+    "title_italic": "palette.",
+    "description": "Mastery of cutting-edge tools for robust, scalable, and innovative digital solutions.",
+    "sections": [
+      {
+        "title": "BACKEND",
+        "desc": "The brain behind your project's success. Stability, security, and performance: our Backend drives your platform forward."
+      },
+      {
+        "title": "FRONTEND",
+        "desc": "Captivating visual magic. Intuitive and aesthetic interfaces for a memorable user experience."
+      },
+      {
+        "title": "MOBILE APPLICATIONS",
+        "desc": "Your Business at your fingertips. Exceptional iOS and Android apps, combining performance with attractive design."
+      },
+      {
+        "title": "E-COMMERCE & CMS",
+        "desc": "Tailored e-commerce solutions. Shopify and Webflow specialists for a high-impact online presence."
+      },
+      {
+        "title": "DEVOPS & QA TOOLS",
+        "desc": "Efficiency at its best. Tools that automate processes and ensure perfection at every stage."
+      }
+    ]
+  },
+  "portfolio_page": {
+    "badge": "Success & Achievements",
+    "title_main": "OUR",
+    "title_italic": "works.",
+    "description": "More than just code, a complete digital experience.",
+    "categories": {
+      "all": "ALL",
+      "web": "WEB",
+      "branding": "BRANDING",
+      "seo": "SEO",
+      "content": "CONTENT"
+    },
+    "card_badge": "Digital Experience",
+    "tagline": "C-DIGITAL • The Art of Dominating the Market through Innovation"
+  },
+  "about_page": {
+    "badge": "Premium Services & Support",
+    "title_main": "ABOUT",
+    "title_italic": "c-digital.",
+    "description": "At C-Digital, we combine creativity and data-driven strategies to help your business thrive online. Our team of experts is dedicated to providing tailored digital marketing solutions that drive results.",
+    "cta_button": "Discover our work",
+    "since": "Since",
+    "stats": [
+      { "label": "Projects Completed", "value": "150+" },
+      { "label": "Satisfied Clients", "value": "98%" },
+      { "label": "Years of Experience", "value": "8+" },
+      { "label": "Dedicated Experts", "value": "12" }
+    ],
+    "mission": {
+      "title": "OUR MISSION",
+      "text": "Your digital journey starts here. We don't just create websites; we build digital ecosystems that propel your brand. Dive into C-Digital expertise to transform every interaction into a growth opportunity."
+    },
+    "who": {
+      "title": "WHO WE ARE?",
+      "text": "A team of digital architects, passionate designers, and data-driven strategists. We believe technology should be invisible to make way for user experience. C-Digital is the bridge between your vision and digital reality."
+    },
+    "values_section": {
+      "title": "OUR CORE VALUES",
+      "subtitle": "The DNA of our agency",
+      "items": [
+        {
+          "title": "Unlimited Creativity",
+          "desc": "We push the boundaries of design to create unique experiences."
+        },
+        {
+          "title": "Data-Driven Strategy",
+          "desc": "Every decision is based on real data to maximize your ROI."
+        },
+        {
+          "title": "Total Commitment",
+          "desc": "Your success is our top priority. We are your partners, not just service providers."
+        }
+      ]
+    }
+  },
+  "team_page": {
+    "badge": "Experts at Your Service",
+    "title_main": "HUMAN",
+    "title_italic": "architecture.",
+    "roles": {
+      "ceo": "CEO & FOUNDER",
+      "lead_tech": "TECH LEAD",
+      "assistant": "EXECUTIVE ASSISTANT",
+      "dev": "FULL STACK DEV",
+      "devops": "DEVOPS & FULLSTACK",
+      "content": "CONTENT CREATOR",
+      "video": "VIDEO EDITOR"
+    }
+  },
+  "packs_page": {
+    "badge": "Transparent Pricing",
+    "description": "Invest in high-performance solutions designed to maximize your return on investment.",
+    "popular": "Most Popular",
+    "starting_at": "Starting from",
+    "unit": "MAD / excl. VAT",
+    "btn_launch": "Launch my Project",
+    "btn_quote": "Request a Quote",
+    "not_found": "The pack \"{slug}\" does not exist.",
+    "data": {
+      "web": {
+        "title": "Web Pack",
+        "plans": [
+          { "name": "Starter", "price": "1,999", "features": ["Landing Page (One-page)", "Mobile First Design", "WhatsApp Integration", "Hosting Included (1 year)", "Free SSL Certificate", ".com Domain Name"] },
+          { "name": "Business", "price": "4,999", "features": ["Multipage Site (5-7 pages)", "Blog / News Section", "Basic On-page SEO", "Admin Panel", "24/7 Support (3 months)", ".com Domain Name"] },
+          { "name": "E-Commerce", "price": "9,999", "features": ["Complete Online Store", "Payments (CMI, Stripe, PayPal)", "Inventory & Order Management", "Tool Training", "Advanced Banking Security", ".com Domain Name"] },
+          { "name": "Custom", "price": "Contact Us", "features": ["Complex Web Applications", "Custom SaaS Systems", "Third-party API Integration", "Dedicated VIP Maintenance", "Unlimited Scalability"] }
+        ]
+      },
+      "seo": {
+        "title": "SEO Pack",
+        "plans": [
+          { "name": "Standard", "price": "1,249", "features": ["Technical SEO Audit", "Keywords (5 targeted)", "Google My Business Optimization", "Monthly Performance Report"] },
+          { "name": "SEO Pro", "price": "3,999", "features": ["Content Strategy (Blog)", "Deep Competitive Audit", "Quality Backlinks (3/month)", "Speed Optimization (Core Vitals)"] },
+          { "name": "Ultimate SEO", "price": "6,699", "features": ["Niche Domination", "Intensive Local & National SEO", "Premium Content Writing", "Real-time Ranking Tracking"] }
+        ]
+      },
+      "video": {
+        "title": "Video Pack",
+        "plans": [
+          { "name": "Social Starter", "price": "2,499", "features": ["2 Reels / TikTok Videos", "Dynamic Editing", "Trending Music Included", "Vertical HD Format"] },
+          { "name": "Creative Pro", "price": "5,499", "features": ["4 Videos (Reels + Corporate)", "Basic Motion Design", "Color Grading", "Scriptwriting & Storyboard"] },
+          { "name": "Cinematic Elite", "price": "10,999", "features": ["TV / Cinema Ad", "3D Motion Graphics", "4K Drone Shots", "Full Artistic Direction"] }
+        ]
+      }
+    }
+  },
+  "footer": {
+    "tagline_main": "THE ART OF",
+    "tagline_highlight": "DOMINATING",
+    "tagline_end": "THE MARKET.",
+    "cta": {
+      "title": "WANT TO GET STARTED?",
+      "desc": "Dive into excellence with our team. Passionate creatives ready to propel your project to new heights.",
+      "btn": "DISCUSS"
+    },
+    "expertises": {
+      "title": "EXPERTISES",
+      "items": ["Website Creation", "Pro E-Commerce", "Mobile Apps", "SEO Strategy", "Visual Identity"]
+    },
+    "agency": {
+      "title": "AGENCY",
+      "items": ["Our DNA", "Our Team", "Works", "Elite Packs", "Direct Contact"]
+    },
+    "contact": {
+      "title": "CONTACT",
+      "support": "ONLINE SUPPORT",
+      "email_label": "EMAIL"
+    },
+    "location": {
+      "address": "48 Lot IGUIDER Allal El Fasi Marrakech",
+      "btn_map": "VIEW ON MAP"
+    },
+    "bottom": {
+      "rights": "ALL RIGHTS RESERVED.",
+      "links": ["PRIVACY", "LEGAL", "TERMS", "COOKIES"],
+      "protocol": "SECURE PROTOCOL"
+    }
+  },
+  "whatsapp": {
+    "title": "Contact Us",
+    "status": "Online Now",
+    "description": "Need help? Click below to start a conversation on WhatsApp.",
+    "role": "Customer Support",
+    "tooltip_title": "Need help?",
+    "tooltip_sub": "Contact us here"
+  }
+}
+
