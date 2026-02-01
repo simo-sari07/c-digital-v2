@@ -352,5 +352,47 @@
     "role": "Support Client",
     "tooltip_title": "Besoin d'aide ?",
     "tooltip_sub": "Contactez-nous ici"
-  }
+  },
+  "blog_page": {
+    "badge": "Actualités & Digital",
+    "title_main": "NOTRE",
+    "title_italic": "blog.",
+    "description": "Découvrez nos dernières réflexions sur le développement, le branding et l'avenir du numérique.",
+    "read_more": "Lire l'article",
+    "back_link": "Retour au Blog",
+    "newsletter_title": "Vous voulez plus de contenu comme celui-ci ?",
+    "newsletter_desc": "Abonnez-vous à notre newsletter ou suivez notre parcours sur les réseaux sociaux pour rester au courant des dernières nouveautés.",
+    "cta_talk": "Parlons-en",
+    "cta_more": "Plus d'articles"
+  },
+  "blog_posts": [
+    {
+      "id": "1",
+      "slug": "workflows-developpement-modernes-2026",
+      "title": "Workflows de Développement Modernes en 2026",
+      "excerpt": "Découvrez comment le développement piloté par l'IA et l'edge computing transforment la création de produits numériques.",
+      "content": "<h1>Workflows de Développement Modernes : L'Avenir de l'Infrastructure Numérique</h1><p>Le paysage du développement logiciel évolue à un rythme sans précédent. En 2026, nous avons dépassé le simple codage pour orchestrer des systèmes complexes intégrés à l'IA qui apprennent et s'adaptent.</p><h2>Le Passage au Développement Natif IA</h2><p>Les développeurs ne se contentent plus d'écrire de la syntaxe ; ils conçoivent des prompts, gèrent des fenêtres de contexte et supervisent des agents autonomes. Cela permet aux équipes de se concentrer sur l'<strong>architecture système</strong> et la <strong>logique de haut niveau</strong>.</p><h2>Edge Computing et Latence Zéro : Le Nouveau Standard</h2><p>Avec le déploiement mondial de réseaux edge avancés, le rêve du 'serverless' est devenu une réalité localisée. Le calcul s'effectue à quelques centimètres de l'utilisateur, faisant de la latence de 0 ms une attente standard plutôt qu'un luxe. C'est crucial pour les applications en temps réel et les expériences web immersives.</p><h3>L'Importance de l'Évolutivité en 2026</h3><p>À mesure que les demandes numériques augmentent, votre infrastructure doit être élastique. Nous utilisons des systèmes distribués qui s'adaptent automatiquement en fonction de la modélisation prédictive de l'IA.</p><blockquote>\"Le meilleur code est celui qui s'écrit lui-même sous la direction d'un architecte créatif.\"</blockquote><p>Le rôle du développeur devient celui d'un architecte de solutions créatives. Si vous cherchez à moderniser votre stack, explorez nos <a href='/services'>services de développement</a>.</p>"
+    },
+    {
+      "id": "2",
+      "slug": "strategies-branding-nouvelle-ere",
+      "title": "Stratégies de Branding pour la Nouvelle Ère Numérique",
+      "excerpt": "Dans un monde de contenu infini, comment votre marque reste-t-elle authentique et mémorable ?",
+      "content": "<h1>Stratégies de Branding : Naviguer dans le Paysage Numérique de 2026</h1><p>Le branding ne se limite plus à un logo ou à une palette de couleurs. Il s'agit de la résonance émotionnelle et de l'ambiance que votre marque projette sur les plateformes décentralisées.</p><h2>L'Authenticité avant la Perfection : Le Manifeste 2026</h2><p>En 2026, le public recherche des connexions brutes et sans filtre. L'ère des identités d'entreprise trop polies s'efface au profit de marques qui osent montrer leur côté humain. L'authenticité est l'<strong>avantage concurrentiel ultime</strong>.</p><h2>Expériences de Marque Immersives : Au-delà de l'Écran</h2><p>Des filtres AR aux salles de marque virtuelles, les points de contact pour l'interaction avec les clients se sont multipliés. Une stratégie de marque réussie intègre ces éléments de manière fluide dans la vie quotidienne du consommateur.</p><p>Nous aidons les marques ambitieuses à naviguer dans cette complexité en nous concentrant sur les valeurs fondamentales et le storytelling. Découvrez notre <a href='/portfolio'>portfolio de branding</a>.</p>"
+    },
+    {
+      "id": "3",
+      "slug": "essor-code-creatif",
+      "title": "L'Essor du Code Créatif",
+      "excerpt": "Quand la logique rencontre l'art : pourquoi le code créatif est la compétence la plus recherchée dans le monde du design.",
+      "content": "<h1>Code Créatif : L'Intersection de l'Art et de la Logique</h1><p>La frontière entre designer et développeur a disparu. Le code créatif est le pont qui nous permet de construire des interfaces qui ne sont pas seulement fonctionnelles, mais poétiques.</p><h2>Pourquoi le Mouvement Compte : L'Âme de l'Interface Utilisateur</h2><p>Les sites statiques appartiennent au passé. Le web d'aujourd'hui est liquide, réactif et animé. GSAP, Three.js et Framer Motion sont les pinceaux de l'artiste numérique moderne. Le <strong>motion design</strong> augmente l'engagement jusqu'à 40%.</p><h2>Beauté Mathématique : Design Génératif</h2><p>L'utilisation d'algorithmes pour générer des motifs visuels uniques pour chaque visite d'utilisateur crée un sentiment d'exclusivité et de design 'vivant' que les actifs traditionnels ne peuvent égaler.</p><p>Chez C-Digital, nous pensons que chaque ligne de code doit contribuer à l'âme esthétique du produit. Apprenez-en plus sur nos <a href='/expertises'>expertises techniques</a>.</p>"
+    },
+    {
+      "id": "4",
+      "slug": "psychology-identite-numerique",
+      "title": "Psychologie de l'Identité de Marque Numérique",
+      "excerpt": "Comprendre les déclencheurs inconscients qui transforment les abonnés en ambassadeurs.",
+      "content": "<h1>La Psychologie du Branding : Construire une Loyauté Inconsciente</h1><p>Pourquoi faisons-nous confiance à certaines entités numériques plutôt qu'à d'autres ? La réponse réside dans les déclencheurs psychologiques profonds de la communauté, de la cohérence et de la facilité cognitive.</p><h2>Bâtir la Confiance par la Transparence : Priorité à la Clarté</h2><p>La transparence est la nouvelle monnaie. Les marques qui sont ouvertes sur leurs processus et leur impact créent un niveau de fidélité insensible aux guerres de prix des concurrents. L'<strong>authenticité</strong> engendre la confiance.</p><h2>Le Paradoxe Minimaliste : La Clarté dans le Chaos</h2><p>Bien que nous vivions dans un environnement numérique maximaliste, les marques les plus efficaces utilisent souvent des codes minimalistes pour signaler la confiance et la clarté. Réduire la charge cognitive est le plus beau cadeau que vous puissiez faire à votre client.</p><p>Développer une identité de marque est un exercice d'empathie—se mettre dans l'esprit de l'utilisateur et résoudre ses angoisses cachées. Contactez notre <a href='/contact'>équipe stratégique</a> pour commencer votre voyage.</p>"
+    }
+  ]
 }

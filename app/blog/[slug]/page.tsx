@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, use } from 'react';
+import React, { useState, useEffect, useRef, use } from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,6 +8,11 @@ import { gsap } from 'gsap';
 import { blogPosts } from '@/lib/blogData';
 import AnimatedButton from '@/components/AnimatedButton';
 import { ArrowLeft, Calendar, User, Tag } from 'lucide-react';
+// Imports dial les fichiers JSON
+import fr from '@/locales/fr.json';
+import en from '@/locales/en.json';
+
+const dictionaries: any = { fr, en };
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>;
@@ -15,11 +20,56 @@ interface BlogPostPageProps {
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = use(params);
-  const post = blogPosts.find((p) => p.slug === slug);
+  const [lang, setLang] = useState('en');
+  const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!post) return;
+    setMounted(true);
+    const updateLang = () => {
+      setLang(document.documentElement.lang || 'en');
+    };
+    updateLang();
+    const observer = new MutationObserver(updateLang);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    return () => observer.disconnect();
+  }, []);
+
+  // Find the post by checking all slugs in all dictionaries
+  const findPostBySlug = () => {
+    // Try current lang first
+    let postTranslation = dictionaries[lang]?.blog_posts?.find((p: any) => p.slug === slug);
+    let detectedLang = lang;
+
+    if (!postTranslation) {
+      // Search in other dictionaries
+      for (const l in dictionaries) {
+        postTranslation = dictionaries[l]?.blog_posts?.find((p: any) => p.slug === slug);
+        if (postTranslation) {
+          detectedLang = l;
+          break;
+        }
+      }
+    }
+
+    if (!postTranslation) return null;
+
+    const basePost = blogPosts.find(p => p.id === postTranslation.id);
+    if (!basePost) return null;
+
+    // Get the translation for the CURRENT lang (or the one we found if current doesn't exist)
+    const currentTranslation = dictionaries[lang]?.blog_posts?.find((p: any) => p.id === basePost.id) || postTranslation;
+
+    return {
+      ...basePost,
+      ...currentTranslation
+    };
+  };
+
+  const post: any = findPostBySlug();
+
+  useEffect(() => {
+    if (!post || !mounted) return;
 
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
@@ -45,11 +95,21 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     }, containerRef);
 
     return () => ctx.revert();
-  }, [post]);
+  }, [post, mounted]);
 
-  if (!post) {
+  useEffect(() => {
+    if (post && mounted) {
+      document.title = `${post.title} | C-Digital Blog`;
+    }
+  }, [post, mounted]);
+
+  if (!post && mounted) {
     notFound();
   }
+
+  const t = dictionaries[lang]?.blog_page || dictionaries.en.blog_page;
+
+  if (!mounted) return null;
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden pb-32 pt-44" ref={containerRef}>
@@ -65,7 +125,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             className="group inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-            Back to Blog
+            {t.back_link}
           </Link>
         </div>
 
@@ -115,16 +175,16 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Footer CTA */}
         <div className="mt-20 p-10 bg-gradient-to-br from-accent/10 to-transparent border border-white/10 rounded-3xl text-center post-content">
-          <h3 className="text-2xl font-title text-white mb-6">Vous voulez plus de contenu comme celui-ci ?</h3>
+          <h3 className="text-2xl font-title text-white mb-6">{t.newsletter_title}</h3>
           <p className="text-white/60 mb-8 max-w-lg mx-auto">
-            Abonnez-vous à notre newsletter ou suivez notre parcours sur les réseaux sociaux pour rester au courant des dernières nouveautés en matière de technologie et de design.
+            {t.newsletter_desc}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <AnimatedButton href="/contact">
-              Parlons-en
+              {t.cta_talk}
             </AnimatedButton>
             <AnimatedButton href="/blog" variant="secondary">
-              Plus d'articles
+              {t.cta_more}
             </AnimatedButton>
           </div>
         </div>
@@ -135,6 +195,14 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-accent/5 blur-[150px] rounded-full" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-secondary/5 blur-[150px] rounded-full" />
       </div>
+
+      <style jsx global>{`
+        .grid-bg {
+          background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+          background-size: 60px 60px;
+        }
+      `}</style>
     </div>
   );
 }
