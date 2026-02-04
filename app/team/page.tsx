@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 // Imports dial les fichiers JSON
 import fr from '@/locales/fr.json';
 import en from '@/locales/en.json';
@@ -33,7 +34,6 @@ export default function TeamPage() {
 
   const t = dictionaries[lang]?.team_page || dictionaries.en.team_page;
 
-  // Re-mapping dial l-team data bach n-sta3mlo les rôles mn l-JSON
   const teamData = {
     leader: { name: "Hicham Mhammedi", role: t.roles.ceo, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433025/WhatsApp_Image_2026-01-26_at_14.09.55_hs9tin.jpg" },
     managers: [
@@ -49,7 +49,7 @@ export default function TeamPage() {
         ]
       },
       { 
-        name: "Hiba Ennajjar", role: t.roles.assistant, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433029/WhatsApp_Image_2026-01-26_at_13.13.40_3_hnswyk.jpg",
+        name: "Hiba Ennajjar", role: t.roles.assistant, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1770050392/WhatsApp_Image_2026-02-02_at_17.36.59_tv6ld1.jpg",
         subTeam: [
           { name: "Anas El Aarsaoui", role: t.roles.content, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769433026/WhatsApp_Image_2026-01-26_at_13.13.40_5_duqxud.jpg" },
           { name: "Othmane", role: t.roles.video, img: "https://res.cloudinary.com/digfptrqs/image/upload/v1769446448/WhatsApp_Image_2026-01-26_at_17.53.15_ewusl2.jpg" }
@@ -77,23 +77,23 @@ export default function TeamPage() {
   if (!mounted) return null;
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-black overflow-hidden pb-40 pt-44 font-sans text-white">
+    <div ref={containerRef} className="relative min-h-screen bg-black overflow-hidden pb-40 pt-44 font-sans text-white text-left md:text-center">
       <div ref={gridRef} className="absolute inset-0 grid-bg opacity-10 pointer-events-none" />
       
-      <main className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
+      <main className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center">
         <div className="mb-32">
           <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">{t.badge}</span>
           <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-tight">
             <div className="overflow-hidden md:block">
               <span className="reveal-text block">{t.title_main}</span>
             </div>
-            <span className="team-script font-script text-accent lowercase block">{t.title_italic}</span>
+            <span className="team-script font-script text-accent lowercase block tracking-normal">{t.title_italic}</span>
           </h1>
         </div>
 
         <div className="tree-container relative w-full flex flex-col items-center">
           <div className="mb-40 relative">
-            <TeamCard member={teamData.leader} size="lg" glow="accent" />
+            <TeamCard member={teamData.leader} size="lg" glow="accent" priority />
             <div className="connector-line absolute top-full left-1/2 -translate-x-1/2 w-[1.5px] h-40 bg-gradient-to-b from-accent to-secondary/20" />
           </div>
 
@@ -116,16 +116,23 @@ export default function TeamPage() {
   );
 }
 
-function TeamCard({ member, size, glow }: any) {
+function TeamCard({ member, size, glow, priority = false }: any) {
   const isLg = size === "lg";
   const isMd = size === "md";
   const cardRef = useRef<HTMLDivElement>(null);
   
   return (
     <div ref={cardRef} className="team-card perspective-1000">
-      <div className={`relative group overflow-hidden rounded-[2.5rem] bg-muted/20 border border-white/5 backdrop-blur-xl transition-all duration-500 hover:border-accent/40 ${isLg ? 'w-72 h-96' : isMd ? 'w-60 h-80' : 'w-full aspect-[4/5]'}`}>
-        <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 scale-105 group-hover:scale-110" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 text-left">
+      <div className={`relative group overflow-hidden rounded-[2.5rem] bg-muted/20 border border-white/5 backdrop-blur-xl transition-all duration-500 hover:border-accent/40 ${isLg ? 'w-72 h-96' : isMd ? 'w-60 h-80' : 'w-full aspect-[4/5]'} relative`}>
+        <Image 
+          src={member.img} 
+          alt={`C-Digital Team Member: ${member.name} - ${member.role}`} 
+          fill
+          priority={priority} // Optimization dial LCP dial Lighthouse
+          sizes={isLg ? "288px" : isMd ? "240px" : "(max-width: 768px) 50vw, 20vw"}
+          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 scale-105 group-hover:scale-110" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 text-left z-10 pointer-events-none">
           <span className={`text-[8px] font-black uppercase tracking-[0.2em] mb-1 ${glow === 'accent' ? 'text-accent' : 'text-secondary'}`}>{member.role}</span>
           <h3 className={`${isLg ? 'text-xl' : 'text-[12px]'} font-black uppercase tracking-tight`}>{member.name}</h3>
         </div>

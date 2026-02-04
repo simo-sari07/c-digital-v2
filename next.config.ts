@@ -1,9 +1,12 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
+    formats: ['image/avif', 'image/webp'], // Khllih i-sift formats sghar
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com', // Source l-wa7ida dyalk
+      },
       {
         protocol: "https",
         hostname: "images.unsplash.com",
@@ -11,5 +14,4 @@ const nextConfig: NextConfig = {
     ],
   },
 };
-
 export default nextConfig;

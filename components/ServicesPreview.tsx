@@ -5,27 +5,27 @@ import SectionWrapper from './SectionWrapper';
 import SectionTitle from './SectionTitle';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 // Imports dial les fichiers JSON
 import fr from '@/locales/fr.json';
 import en from '@/locales/en.json';
 
 const dictionaries: any = { fr, en };
 
-// Khallina l-data li maktbedelch (images/numbers) hna
+// Data m9ada b Cloudinary URLs
 const serviceAssets = [
-  { number: '01', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop' },
-  { number: '02', image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=2070&auto=format&fit=crop" },
-  { number: '03', image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2071&auto=format&fit=crop" },
-  { number: '04', image: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=764&auto=format&fit=crop" },
-  { number: '05', image: "https://marketing-bienveillant.com/wp-content/uploads/2021/11/strategie-de-contenu-pour-votre-entreprise.png" },
-  { number: '06', image: "https://www.adimeo.com/hubfs/webinar-strategie-ia-seo-2026.webp" }
+  { number: '01', image: 'https://res.cloudinary.com/digfptrqs/image/upload/v1769953599/photo-1460925895917-afdab827c52f_qziwwe.jpg' },
+  { number: '02', image: "https://res.cloudinary.com/digfptrqs/image/upload/v1769953600/photo-1512941937669-90a1b58e7e9c_fuysak.jpg" },
+  { number: '03', image: "https://res.cloudinary.com/digfptrqs/image/upload/v1769953599/photo-1492691527719-9d1e07e534b4_ez0zsm.jpg" },
+  { number: '04', image: "https://res.cloudinary.com/digfptrqs/image/upload/v1769953599/photo-1558655146-d09347e92766_uynxyk.jpg" },
+  { number: '05', image: "https://res.cloudinary.com/digfptrqs/image/upload/v1769953600/strategie-de-contenu-pour-votre-entreprise_ih6qt9.png" },
+  { number: '06', image: "https://res.cloudinary.com/digfptrqs/image/upload/v1769953599/webinar-strategie-ia-seo-2026_f3lfev.webp" }
 ];
 
 export default function ServicesPreview() {
   const [lang, setLang] = useState('en');
   const [mounted, setMounted] = useState(false);
 
-  // 1. Logic dial Language Detection
   useEffect(() => {
     setMounted(true);
     const updateLang = () => {
@@ -61,8 +61,8 @@ export default function ServicesPreview() {
           >
             <div className="flex flex-col md:flex-row items-center p-8 md:p-12 gap-8 h-[500px] md:h-[400px]">
               
-              {/* Left: Text (Dynamique mn JSON) */}
-              <div className="w-full md:w-1/3 flex flex-col justify-center">
+              {/* Left: Text */}
+              <div className="w-full md:w-1/3 flex flex-col justify-center text-left">
                  <h3 className="text-4xl md:text-5xl font-black text-white uppercase mb-4 leading-[0.9]">
                    {item.title}
                  </h3>
@@ -71,17 +71,20 @@ export default function ServicesPreview() {
                  </p>
               </div>
 
-              {/* Center: Image (Mn assets local) */}
+              {/* Center: Image Optimized with next/image */}
               <div className="w-full md:w-1/3 h-full rounded-2xl overflow-hidden relative group">
-                 <img 
+                 <Image 
                    src={serviceAssets[idx].image} 
-                   alt={item.title} 
-                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                   alt={`Expertise C-Digital: ${item.title}`} 
+                   fill
+                   sizes="(max-width: 768px) 100vw, 33vw"
+                   className="object-cover transition-transform duration-700 group-hover:scale-110"
+                   loading="lazy"
                  />
                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
               </div>
 
-              {/* Right: Number (Mn assets local) */}
+              {/* Right: Number */}
               <div className="w-full md:w-1/3 flex justify-end items-end h-full">
                  <span className="text-[8rem] md:text-[10rem] font-black text-accent leading-none opacity-20 md:opacity-100 select-none">
                    {serviceAssets[idx].number}

@@ -27,7 +27,7 @@ export const blogPosts: BlogPost[] = [
       <p>As we look forward, the role of a 'Dev' is becoming more about system architecture and creative problem solving than ever before.</p>
     `,
     date: 'January 15, 2026',
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop',
+    image: 'https://res.cloudinary.com/digfptrqs/image/upload/v1770032051/photo-1498050108023-c5249f4df085_iug22r.jpg',
     author: 'C-Digital Dev Team'
   },
   {
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
       <p>We help ambitious brands navigate this complexity by focusing on core values and storytelling that cuts through the noise.</p>
     `,
     date: 'January 20, 2026',
-    image: 'https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=2031&auto=format&fit=crop',
+    image: 'https://res.cloudinary.com/digfptrqs/image/upload/v1770032052/photo-1557838923-2985c318be48_tfwund.jpg',
     author: 'C-Digital Creative'
   },
   {
@@ -63,7 +63,7 @@ export const blogPosts: BlogPost[] = [
       <p>At C-Digital, we believe every line of code should contribute to the aesthetic soul of the product.</p>
     `,
     date: 'January 25, 2026',
-    image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://res.cloudinary.com/digfptrqs/image/upload/v1770032051/photo-1550745165-9bc0b252726f_yhzhwr.jpg',
     author: 'C-Digital Lab'
   },
   {
@@ -81,7 +81,7 @@ export const blogPosts: BlogPost[] = [
       <p>Developing a brand identity is an exercise in empathy—putting yourself in the mind of the user and solving their hidden anxieties.</p>
     `,
     date: 'January 28, 2026',
-    image: 'https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=2071&auto=format&fit=crop',
+    image: 'https://res.cloudinary.com/digfptrqs/image/upload/v1770032051/photo-1512314889357-e157c22f938d_dwicku.jpg',
     author: 'C-Digital Strategy'
   }
 ];

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
+import Image from 'next/image';
 // Imports dial les fichiers JSON
 import fr from '@/locales/fr.json';
 import en from '@/locales/en.json';
@@ -62,18 +63,20 @@ export default function PortfolioPage() {
       <div className="text-center mb-20 relative z-10">
         <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">{t.badge}</span>
         <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
-          {t.title_main} <span className="text-gradient italic font-script lowercase">{t.title_italic}</span>
+          {t.title_main} <span className="text-gradient italic font-script lowercase tracking-normal">{t.title_italic}</span>
         </h1>
-        <p className="text-gray-400 font-medium text-lg max-w-2xl mx-auto">{t.description}</p>
+        <p className="text-gray-400 font-medium text-lg max-w-2xl mx-auto leading-relaxed">{t.description}</p>
       </div>
 
+      {/* Categories Filter Optimized for Accessibility */}
       <div className="flex justify-center mb-24 relative z-20">
-        <div className="inline-flex bg-muted/20 backdrop-blur-xl border border-white/5 rounded-full p-1.5 shadow-2xl">
+        <div className="inline-flex bg-muted/20 backdrop-blur-xl border border-white/5 rounded-full p-1.5 shadow-2xl overflow-x-auto max-w-full no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActiveTab(cat.id)}
-              className={`relative z-10 px-10 py-3.5 text-[10px] font-black tracking-[0.2em] transition-all duration-500 uppercase ${
+              aria-label={`Filter by ${cat.label}`}
+              className={`relative z-10 px-6 md:px-10 py-3.5 text-[10px] font-black tracking-[0.2em] transition-all duration-500 uppercase shrink-0 ${
                 activeTab === cat.id ? 'text-black' : 'text-white/40 hover:text-white'
               }`}
             >
@@ -90,13 +93,15 @@ export default function PortfolioPage() {
         </div>
       </div>
 
+      {/* Portfolio Grid Optimized with next/image */}
       <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto relative z-10">
         <AnimatePresence mode='popLayout'>
-          {filteredItems.map((item) => (
+          {filteredItems.map((item, idx) => (
             <motion.a
               key={item.id}
               href={item.url}
               target="_blank"
+              rel="noopener noreferrer" // Security Fix for Best Practices
               layout
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -104,18 +109,28 @@ export default function PortfolioPage() {
               className="group relative block aspect-[4/3] bg-muted/10 rounded-[2.5rem] overflow-hidden border border-white/10 hover:border-accent/50 transition-all duration-500 shadow-2xl"
             >
               <div className="absolute inset-0">
-                <img src={item.img} alt={item.title} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-60 group-hover:opacity-100" />
+                <Image 
+                  src={item.img} 
+                  alt={`Portfolio Project: ${item.title}`} 
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-60 group-hover:opacity-100 scale-105 group-hover:scale-100"
+                  loading={idx < 3 ? "eager" : "lazy"}
+                  priority={idx < 3} // Optimisation Performance: 3 tswari l-wala k-it-charg-aw dghya
+                />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-10 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500">
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent p-10 flex flex-col justify-end opacity-0 group-hover:opacity-100 transition-all duration-500 z-10">
                 <div className="flex justify-between items-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <div>
+                  <div className="text-left">
                     <span className="text-accent text-[9px] font-black uppercase tracking-[0.3em] mb-3 block">{t.card_badge}</span>
                     <h3 className="text-2xl font-black uppercase tracking-tight">{item.title}</h3>
                   </div>
-                  <div className="bg-white text-black p-3 rounded-2xl"><ExternalLink size={20} /></div>
+                  <div className="bg-white text-black p-3 rounded-2xl shrink-0"><ExternalLink size={20} /></div>
                 </div>
               </div>
-              <div className="absolute top-6 left-6 flex gap-2">
+
+              <div className="absolute top-6 left-6 flex gap-2 z-10">
                 <span className="px-4 py-1.5 bg-black/60 backdrop-blur-md rounded-full text-[8px] font-black uppercase tracking-widest border border-white/10">{item.category}</span>
               </div>
             </motion.a>

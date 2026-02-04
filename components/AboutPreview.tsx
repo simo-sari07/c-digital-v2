@@ -7,6 +7,7 @@ import AnimatedButton from './AnimatedButton';
 import { Target, Sparkles } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 // Imports dial les fichiers JSON
 import fr from '@/locales/fr.json';
 import en from '@/locales/en.json';
@@ -24,7 +25,6 @@ export default function AboutPreview() {
   const [lang, setLang] = useState('en');
   const [mounted, setMounted] = useState(false);
 
-  // 1. Logic dial Language Detection
   useEffect(() => {
     setMounted(true);
     const updateLang = () => {
@@ -38,7 +38,6 @@ export default function AboutPreview() {
 
   const t = dictionaries[lang]?.about_preview || dictionaries.en.about_preview;
 
-  // 2. GSAP Animations (Intact)
   useEffect(() => {
     if (!mounted) return;
     const ctx = gsap.context(() => {
@@ -76,71 +75,74 @@ export default function AboutPreview() {
       <div ref={containerRef} className="grid lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Column: Vision & Content */}
-        <div ref={leftContentRef}>
+        <div ref={leftContentRef} className="text-left">
           <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">
             {t.badge}
           </span>
           <SectionTitle className="text-left mb-8">
             {t.title_main} <br />
-            <span className="text-gradient italic font-script lowercase">{t.title_italic}</span>
+            <span className="text-gradient italic font-script lowercase tracking-normal">{t.title_italic}</span>
           </SectionTitle>
           
-          <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg">
+          <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg font-medium">
             {t.description}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-8 mb-10">
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-accent/10 rounded-2xl border border-accent/20">
+              <div className="p-3 bg-accent/10 rounded-2xl border border-accent/20 shrink-0">
                 <Target className="text-accent" size={24} />
               </div>
               <div>
-                <h4 className="text-white font-bold uppercase text-sm mb-1">{t.mission.title}</h4>
-                <p className="text-gray-500 text-xs leading-relaxed max-w-[200px]">
+                <h4 className="text-white font-black uppercase text-[10px] tracking-widest mb-1">{t.mission.title}</h4>
+                <p className="text-gray-500 text-xs leading-relaxed max-w-[200px] font-medium">
                   {t.mission.text}
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-secondary/10 rounded-2xl border border-secondary/20">
+              <div className="p-3 bg-secondary/10 rounded-2xl border border-secondary/20 shrink-0">
                 <Sparkles className="text-secondary" size={24} />
               </div>
               <div>
-                <h4 className="text-white font-bold uppercase text-sm mb-1">{t.who.title}</h4>
-                <p className="text-gray-500 text-xs leading-relaxed max-w-[200px]">
+                <h4 className="text-white font-black uppercase text-[10px] tracking-widest mb-1">{t.who.title}</h4>
+                <p className="text-gray-500 text-xs leading-relaxed max-w-[200px] font-medium">
                   {t.who.text}
                 </p>
               </div>
             </div>
           </div>
 
-          <AnimatedButton href="/about" variant="primary" showIcon>
+          <AnimatedButton href="/about" variant="primary" showIcon className="px-10 py-5 text-[10px]">
             {t.btn_more}
           </AnimatedButton>
         </div>
 
-        {/* Right Column: Visual & Stats */}
+        {/* Right Column: Visual & Stats - Optimized with next/image */}
         <div ref={rightContentRef} className="relative">
           <div className="aspect-square bg-muted/20 border border-white/5 rounded-[4rem] overflow-hidden group relative">
-            <img 
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
-              alt="Our Team" 
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100 opacity-60"
+            <Image 
+              src="https://res.cloudinary.com/digfptrqs/image/upload/v1769953600/photo-1522071820081-009f0129c71c_gq1x8i.jpg" 
+              alt="C-Digital Agency Team working on web development" 
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100 opacity-60"
+              loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
             
-            <div className="absolute bottom-10 left-10 right-10 grid grid-cols-2 gap-4">
+            <div className="absolute bottom-10 left-10 right-10 grid grid-cols-2 gap-4 z-10">
               {t.stats.map((stat: any, i: number) => (
                 <div key={i} className="bg-black/60 backdrop-blur-md border border-white/10 p-6 rounded-3xl">
                   <h3 className="text-3xl font-black text-gradient mb-1">{stat.value}</h3>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-white/40">{stat.label}</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-white/40">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent/10 blur-[80px] rounded-full animate-aura"></div>
-          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 blur-[80px] rounded-full animate-aura-reverse"></div>
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent/10 blur-[80px] rounded-full animate-aura pointer-events-none"></div>
+          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 blur-[80px] rounded-full animate-aura-reverse pointer-events-none"></div>
         </div>
 
       </div>
