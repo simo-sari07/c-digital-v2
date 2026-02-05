@@ -67,7 +67,7 @@ export default function WhyUs() {
               {t.badge}
             </span>
             <SectionTitle className="mb-8">
-              {t.title_main} <span className="font-script text-violet-400 normal-case">{t.title_script}</span>, <br />
+              {t.title_main} <span className="text-gradient font-script normal-case">{t.title_script}</span>, <br />
               {t.title_sub}
             </SectionTitle>
             <p className="text-gray-400 text-lg lg:text-xl font-medium leading-relaxed max-w-2xl mx-auto">

@@ -103,7 +103,7 @@ export default function Testimonials() {
     <section id="testimonials" data-bgcolor="#000000" className="bg-black py-24 md:py-32 overflow-hidden w-full relative font-sans">
       <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-12 md:mb-20 relative z-30">
         <SectionTitle className="mb-6 text-3xl md:text-5xl lg:text-7xl">
-          {t.title_main} <span className="font-script text-accent normal-case">{t.title_script}</span> <br className="hidden md:block" /> {t.title_sub}
+          {t.title_main} <span className="text-gradient font-script normal-case">{t.title_script}</span> <br className="hidden md:block" /> {t.title_sub}
         </SectionTitle>
         <p className="text-white/60 max-w-2xl mx-auto text-sm md:text-base lg:text-lg font-medium leading-relaxed">
           {t.description}

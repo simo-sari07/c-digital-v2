@@ -90,7 +90,7 @@ export default function About() {
             <h2 className="text-5xl md:text-7xl font-black text-white leading-tight mb-8">
               À PROPOS <br />
               DE <br />
-              <span className="font-script text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-fuchsia-500">
+              <span className="text-gradient font-script normal-case">
                 C-DIGITAL.
               </span>
             </h2>

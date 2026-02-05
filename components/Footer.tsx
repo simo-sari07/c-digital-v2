@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
 
         {/* Floating CTA Banner Section */}
-        <div className="relative group bg-violet-500 rounded-[2.5rem] p-8 md:p-14 overflow-hidden border border-white/10 shadow-[0_20px_100px_rgba(167,139,250,0.3)] mb-20">
+        {/* <div className="relative group bg-violet-500 rounded-[2.5rem] p-8 md:p-14 overflow-hidden border border-white/10 shadow-[0_20px_100px_rgba(167,139,250,0.3)] mb-20">
           <div className="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-end gap-10 text-black text-left">
             <div className="max-w-3xl">
               <h2 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase leading-[0.8] tracking-tighter mb-8">{t.cta.title}</h2>
@@ -60,7 +60,7 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Main Content Grid Dynamique */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">

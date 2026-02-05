@@ -48,7 +48,7 @@ export default function AboutPage() {
             <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">{t.badge}</span>
             <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
               {t.title_main} <br />
-              <span className="text-gradient italic font-script lowercase tracking-normal">{t.title_italic}</span>
+              <span className="text-gradient font-script normal-case tracking-normal">{t.title_italic}</span>
             </h1>
             <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg font-medium">{t.description}</p>
             <AnimatedButton href="/portfolio" variant="primary" className="px-10 py-5 text-[10px] tracking-widest uppercase font-black">

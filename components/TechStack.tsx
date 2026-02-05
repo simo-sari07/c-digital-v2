@@ -88,7 +88,7 @@ export default function TechStack() {
         <section id="stack" data-bgcolor="#111111" className="bg-black py-24 md:py-32 overflow-hidden w-full relative font-sans">
             <div className="max-w-7xl mx-auto px-6 md:px-12 text-center mb-20 relative z-30">
                 <SectionTitle>
-                    {t.title_main} <span className="font-script text-violet-400 normal-case tracking-normal">{t.title_script}</span> {t.title_sub}
+                    {t.title_main} <span className="text-gradient font-script normal-case tracking-normal">{t.title_script}</span> {t.title_sub}
                 </SectionTitle>
                 <p className="text-white/60 max-w-2xl mx-auto mt-6 text-base md:text-lg font-black uppercase tracking-widest leading-relaxed">
                     {t.description}

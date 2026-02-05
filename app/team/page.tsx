@@ -87,7 +87,7 @@ export default function TeamPage() {
             <div className="overflow-hidden md:block">
               <span className="reveal-text block">{t.title_main}</span>
             </div>
-            <span className="team-script font-script text-accent lowercase block tracking-normal">{t.title_italic}</span>
+            <span className="team-script text-gradient font-script normal-case block tracking-normal">{t.title_italic}</span>
           </h1>
         </div>
 

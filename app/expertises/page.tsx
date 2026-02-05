@@ -80,7 +80,7 @@ export default function ExpertisesPage() {
             <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">{t.badge}</span>
             <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
               {t.title_main} <br className="md:hidden" />
-              <span className="text-gradient italic font-script lowercase tracking-normal">{t.title_italic}</span>
+              <span className="text-gradient font-script normal-case tracking-normal">{t.title_italic}</span>
             </h1>
             <p className="text-gray-400 font-black uppercase tracking-widest text-sm max-w-2xl mx-auto leading-relaxed opacity-60">
               {t.description}

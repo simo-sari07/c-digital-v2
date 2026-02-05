@@ -48,7 +48,7 @@ export default function PackPage() {
         <div className="text-center mb-24">
           <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">{t.badge}</span>
           <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
-            {pack.title.split(' ')[0]} <span className="text-gradient italic font-script lowercase tracking-normal">{pack.title.split(' ')[1]}s.</span>
+            {pack.title.split(' ')[0]} <span className="text-gradient font-script normal-case tracking-normal">{pack.title.split(' ')[1]}s.</span>
           </h1>
           <p className="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl font-medium">{t.description}</p>
         </div>

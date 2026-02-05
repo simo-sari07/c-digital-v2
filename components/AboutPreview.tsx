@@ -81,7 +81,7 @@ export default function AboutPreview() {
           </span>
           <SectionTitle className="text-left mb-8">
             {t.title_main} <br />
-            <span className="text-gradient italic font-script lowercase tracking-normal">{t.title_italic}</span>
+            <span className="text-gradient font-script normal-case tracking-normal">{t.title_italic}</span>
           </SectionTitle>
           
           <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg font-medium">

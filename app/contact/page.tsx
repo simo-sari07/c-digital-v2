@@ -99,7 +99,7 @@ export default function ContactPage() {
             <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block font-sans">Contactez-nous</span>
             <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8 font-sans">
               <span>DÉMARREZ LA</span> <br />
-              <span className="text-gradient italic font-script lowercase">conversation.</span>
+              <span className="text-gradient font-script normal-case">conversation.</span>
             </h1>
             <div className="space-y-8 mt-12">
               <ContactItem icon={<MapPin size={20}/>} title="Bureau" content="48 Lot IGUIDER Allal El Fasi Marrakech" />

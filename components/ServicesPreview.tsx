@@ -45,7 +45,7 @@ export default function ServicesPreview() {
     <SectionWrapper id="services" data-bgcolor="#050a14" className="bg-black font-sans">
       <div className="flex flex-col md:flex-row justify-between items-end mb-20 px-4 md:px-0">
         <SectionTitle className="text-left mb-0">
-          {t.title_main} <span className="font-script text-accent normal-case">{t.title_script}</span> <br className="hidden md:block" /> {t.title_sub}
+          {t.title_main} <span className="text-gradient font-script normal-case">{t.title_script}</span> <br className="hidden md:block" /> {t.title_sub}
         </SectionTitle>
         <Link href="/services" className="hidden md:flex items-center gap-2 text-white hover:text-accent transition-colors uppercase tracking-widest text-sm font-bold">
           {t.view_all} <ArrowRight size={16} />

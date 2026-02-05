@@ -11,6 +11,7 @@ type AnimatedButtonProps = {
   onClick?: () => void;
   variant?: 'primary' | 'secondary';
   scramble?: boolean;
+  active?: boolean;
 };
 
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+?><';
@@ -22,6 +23,7 @@ export default function AnimatedButton({
   showIcon = true,
   onClick,
   variant = 'primary',
+  active = false,
 }: AnimatedButtonProps) {
   const buttonRef = useRef<HTMLDivElement | HTMLAnchorElement | null>(null);
   const iconRef = useRef<HTMLDivElement>(null);
@@ -80,8 +82,8 @@ export default function AnimatedButton({
   }, []);
 
   const variants = {
-    primary: "bg-gradient-to-r from-accent to-secondary text-white border-transparent hover:shadow-[0_8px_25px_-5px_rgba(99,102,241,0.4)]",
-    secondary: "bg-transparent border-white/20 text-white hover:border-white/40",
+    primary: `${active ? 'shadow-[0_0_20px_rgba(174,82,240,0.4)] border-white/50' : 'border-transparent'} bg-gradient-to-r from-accent to-secondary text-white hover:shadow-[0_8px_25px_-5px_rgba(99,102,241,0.4)]`,
+    secondary: `${active ? 'bg-white/10 border-white/40' : 'bg-transparent border-white/20'} text-white hover:border-white/40`,
   };
 
   const commonClasses = `relative inline-flex items-center justify-center px-8 py-3.5 font-button font-bold uppercase tracking-widest rounded-xl overflow-hidden border transition-all duration-300 group ${variants[variant]} ${className}`;

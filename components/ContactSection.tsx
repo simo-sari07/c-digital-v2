@@ -116,7 +116,7 @@ export default function ContactSection() {
             <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">{t.badge}</span>
             <SectionTitle className="text-left mb-8">
               {t.title_main} <br />
-              <span className="text-gradient italic font-script lowercase text-6xl tracking-normal">{t.title_italic}</span>
+              <span className="text-gradient font-script normal-case text-6xl tracking-normal">{t.title_italic}</span>
             </SectionTitle>
             <div className="space-y-6 mt-10">
                <ContactItemSimple icon={<Mail size={18}/>} content="Contact@c-digital.ma" />

@@ -63,7 +63,7 @@ export default function PortfolioPage() {
       <div className="text-center mb-20 relative z-10">
         <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">{t.badge}</span>
         <h1 className="text-5xl md:text-[80px] font-black uppercase tracking-tighter leading-none mb-8">
-          {t.title_main} <span className="text-gradient italic font-script lowercase tracking-normal">{t.title_italic}</span>
+          {t.title_main} <span className="text-gradient font-script normal-case tracking-normal">{t.title_italic}</span>
         </h1>
         <p className="text-gray-400 font-medium text-lg max-w-2xl mx-auto leading-relaxed">{t.description}</p>
       </div>
