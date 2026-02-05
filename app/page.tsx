@@ -31,14 +31,20 @@ const ContactSection = dynamic(() => import('@/components/ContactSection'), {
   ssr: false
 });
 
+const ChevronDivider = dynamic(() => import('@/components/ChevronDivider'), {
+  ssr: false
+});
+
 export default function Home() {
   return (
     <main className="bg-black">
       {/* Hero k-i-ban f 0.1s hit ma-3ndouch mouchkil dial JS block */}
       <Hero />
+      <ChevronDivider />
       
       {/* Had l-sections ghadi i-t-chargeaw ghir mlli l-browser i-koun ready */}
       <AboutPreview />
+      <ChevronDivider />
       <WhyUs />
       <ServicesPreview />
       <TechStack />

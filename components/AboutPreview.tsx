@@ -71,41 +71,45 @@ export default function AboutPreview() {
   if (!mounted) return null;
 
   return (
-    <SectionWrapper id="about-preview" bgColor="#030303" className="overflow-hidden font-sans">
-      <div ref={containerRef} className="grid lg:grid-cols-2 gap-16 items-center">
+    <SectionWrapper id="about-preview" bgColor="#FFFFFF" className="overflow-hidden font-sans relative">
+      {/* Chart Grid Background Light */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]" 
+           style={{ backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
+
+      <div ref={containerRef} className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
         
         {/* Left Column: Vision & Content */}
         <div ref={leftContentRef} className="text-left">
           <span className="text-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">
             {t.badge}
           </span>
-          <SectionTitle className="text-left mb-8">
+          <SectionTitle className="text-left mb-8 !text-black">
             {t.title_main} <br />
             <span className="text-gradient font-script normal-case tracking-normal">{t.title_italic}</span>
           </SectionTitle>
           
-          <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg font-medium">
+          <p className="text-gray-600 text-lg leading-relaxed mb-10 max-w-lg font-medium">
             {t.description}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-8 mb-10">
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-accent/10 rounded-2xl border border-accent/20 shrink-0">
+              <div className="p-3 bg-accent/5 rounded-2xl border border-accent/10 shrink-0">
                 <Target className="text-accent" size={24} />
               </div>
               <div>
-                <h4 className="text-white font-black uppercase text-[10px] tracking-widest mb-1">{t.mission.title}</h4>
+                <h4 className="text-black font-black uppercase text-[10px] tracking-widest mb-1">{t.mission.title}</h4>
                 <p className="text-gray-500 text-xs leading-relaxed max-w-[200px] font-medium">
                   {t.mission.text}
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-secondary/10 rounded-2xl border border-secondary/20 shrink-0">
+              <div className="p-3 bg-secondary/5 rounded-2xl border border-secondary/10 shrink-0">
                 <Sparkles className="text-secondary" size={24} />
               </div>
               <div>
-                <h4 className="text-white font-black uppercase text-[10px] tracking-widest mb-1">{t.who.title}</h4>
+                <h4 className="text-black font-black uppercase text-[10px] tracking-widest mb-1">{t.who.title}</h4>
                 <p className="text-gray-500 text-xs leading-relaxed max-w-[200px] font-medium">
                   {t.who.text}
                 </p>
@@ -113,36 +117,36 @@ export default function AboutPreview() {
             </div>
           </div>
 
-          <AnimatedButton href="/about" variant="primary" showIcon className="px-10 py-5 text-[10px]">
+          <AnimatedButton href="/about" variant="primary" showIcon className="px-10 py-5 text-[10px] !text-white">
             {t.btn_more}
           </AnimatedButton>
         </div>
 
         {/* Right Column: Visual & Stats - Optimized with next/image */}
         <div ref={rightContentRef} className="relative">
-          <div className="aspect-square bg-muted/20 border border-white/5 rounded-[4rem] overflow-hidden group relative">
+          <div className="aspect-square bg-black/5 border border-black/5 rounded-[4rem] overflow-hidden group relative">
             <Image 
               src="https://res.cloudinary.com/digfptrqs/image/upload/v1769953600/photo-1522071820081-009f0129c71c_gq1x8i.jpg" 
               alt="C-Digital Agency Team working on web development" 
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100 opacity-60"
+              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100 opacity-90"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent pointer-events-none"></div>
             
             <div className="absolute bottom-10 left-10 right-10 grid grid-cols-2 gap-4 z-10">
               {t.stats.map((stat: any, i: number) => (
-                <div key={i} className="bg-black/60 backdrop-blur-md border border-white/10 p-6 rounded-3xl">
+                <div key={i} className="bg-white/90 backdrop-blur-md border border-black/5 p-6 rounded-3xl shadow-xl">
                   <h3 className="text-3xl font-black text-gradient mb-1">{stat.value}</h3>
-                  <p className="text-[10px] font-black uppercase tracking-widest text-white/40">{stat.label}</p>
+                  <p className="text-[10px] font-black uppercase tracking-widest text-black/40">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent/10 blur-[80px] rounded-full animate-aura pointer-events-none"></div>
-          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/10 blur-[80px] rounded-full animate-aura-reverse pointer-events-none"></div>
+          <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent/5 blur-[80px] rounded-full animate-aura pointer-events-none"></div>
+          <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary/5 blur-[80px] rounded-full animate-aura-reverse pointer-events-none"></div>
         </div>
 
       </div>
