@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import SectionWrapper from '@/components/SectionWrapper';
 import SectionTitle from '@/components/SectionTitle';
 import ServicesList from '@/components/ServicesList';
 import AnimatedButton from '@/components/AnimatedButton';
+import GlobalScrollLine from '@/components/GlobalScrollLine';
 // Imports dial les fichiers JSON
 import fr from '@/locales/fr.json';
 import en from '@/locales/en.json';
@@ -14,6 +15,7 @@ const dictionaries: any = { fr, en };
 export default function ServicesPage() {
   const [lang, setLang] = useState('en');
   const [mounted, setMounted] = useState(false);
+  const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -31,9 +33,10 @@ export default function ServicesPage() {
   if (!mounted) return null;
 
   return (
-    <main className="min-h-screen bg-black relative overflow-hidden">
+    <main ref={containerRef} className="min-h-screen bg-black relative overflow-hidden">
       {/* Cinematic Background Decor */}
       <div className="absolute inset-0 z-0 pointer-events-none">
+        <GlobalScrollLine triggerRef={containerRef} />
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-violet-600/10 blur-[150px] rounded-full" />
         <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-fuchsia-600/10 blur-[150px] rounded-full" />
         <div className="absolute inset-0 grid-bg opacity-20" />

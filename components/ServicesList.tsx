@@ -72,64 +72,72 @@ export default function ServicesList() {
   if (!mounted) return null;
 
   return (
-    <div ref={containerRef} className="w-full py-20 px-4 md:px-8 xl:px-20">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {t.items.map((service: any, index: number) => (
+    <div ref={containerRef} className="w-full max-w-7xl mx-auto py-32 space-y-48">
+      {t.items.map((service: any, index: number) => {
+        const isFirst = index % 2 === 0;
+        return (
           <div 
             key={service.id}
-            className="service-card group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-[2rem] p-8 md:p-10 transition-all duration-500 hover:bg-white/[0.08] hover:border-violet-500/30 hover:shadow-[0_20px_50px_rgba(124,58,237,0.15)] overflow-hidden"
+            className={`service-card flex flex-col ${isFirst ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center px-4 md:px-8`}
           >
-            {/* Background Gradient Detail */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-violet-600/20 to-fuchsia-600/20 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            
-            {/* Header: Icon & Number */}
-            <div className="flex justify-between items-start mb-8">
-              <div className="p-4 bg-white/5 rounded-2xl border border-white/10 group-hover:border-violet-500/30 transition-colors duration-500">
-                {icons[service.id]}
+            {/* Visual Block */}
+            <div className="w-full lg:w-1/2 relative aspect-square md:aspect-video lg:aspect-square rounded-[3rem] overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-black/40 backdrop-blur-3xl border border-white/10 group-hover:border-violet-500/30 transition-colors duration-500" />
+              
+              {/* Massive Floating Icon */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="relative transform group-hover:scale-110 transition-transform duration-700">
+                  <div className="absolute inset-0 bg-violet-500/20 blur-[60px] rounded-full animate-aura" />
+                  <div className="relative p-12 bg-white/5 rounded-[2.5rem] border border-white/10 backdrop-blur-xl shadow-2xl">
+                    {icons[service.id]}
+                  </div>
+                </div>
               </div>
-              <span className="text-4xl font-black text-white/5 select-none transition-colors duration-500 group-hover:text-violet-500/10">
+              
+              {/* Diagonal Number Backdrop */}
+              <span className="absolute top-10 right-10 text-[12rem] font-black text-white/[0.03] select-none leading-none">
                 0{index + 1}
               </span>
             </div>
 
-            {/* Content */}
-            <div className="relative z-10">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-violet-400">
+            {/* Content Block */}
+            <div className={`w-full lg:w-1/2 flex flex-col ${isFirst ? 'lg:items-start' : 'lg:items-end'} text-center ${isFirst ? 'lg:text-left' : 'lg:text-right'}`}>
+              <div className="inline-block px-4 py-2 rounded-full border border-violet-500/20 bg-violet-500/5 text-violet-400 text-[10px] font-black tracking-[0.2em] uppercase mb-6">
+                Department 0{index + 1}
+              </div>
+              
+              <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 uppercase tracking-tighter leading-none">
                 {service.title}
               </h3>
-              <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-8 font-medium">
+              
+              <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-10 font-medium max-w-xl">
                 {service.desc}
               </p>
 
-              {/* Features List */}
-              <ul className="space-y-3 mb-10">
+              {/* Features Grid-style List */}
+              <div className={`flex flex-wrap gap-4 mb-12 ${isFirst ? 'justify-start' : 'justify-end'}`}>
                 {service.features.map((feature: string, i: number) => (
-                  <li key={i} className="flex items-center gap-3 text-xs md:text-sm font-semibold text-white/70">
-                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-violet-500/10 flex items-center justify-center border border-violet-500/20">
-                      <Check size={12} className="text-violet-400" />
-                    </div>
+                  <div key={i} className="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-xs md:text-sm font-bold text-white/80 hover:border-violet-500/30 transition-colors cursor-default">
                     {feature}
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
-              {/* CTA Button */}
-              <Link href={`/services/${service.id}`} className="block w-full">
+              {/* CTA */}
+              <Link href={`/services/${service.id}`}>
                 <AnimatedButton 
                   showIcon 
-                  variant="secondary" 
-                  className="w-full mt-auto py-4 border-white/10 group-hover:border-violet-500/40 group-hover:bg-violet-500/[0.05] transition-all duration-500 pointer-events-none"
+                  variant="primary" 
+                  className="px-10 py-5 bg-gradient-to-r from-violet-600 to-fuchsia-600 border-none shadow-xl shadow-violet-500/10"
                 >
                   {t.cta}
                 </AnimatedButton>
               </Link>
             </div>
-            
-            {/* Bottom Glow */}
-            <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-violet-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           </div>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 }
