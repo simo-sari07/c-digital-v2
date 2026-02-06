@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import TransitionLink from "./TransitionLink";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
@@ -19,6 +20,7 @@ const languages = [
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState("en");
   const [isPacksOpen, setIsPacksOpen] = useState(false);
@@ -42,7 +44,7 @@ export default function Navbar() {
   const t = dictionaries[currentLang]?.navbar || dictionaries.en.navbar;
 
   const navLinks = [
-    { name: t.services, href: "/services" },
+    // Services moved to separate dropdown
     { name: t.expertises, href: "/expertises" },
     { name: t.portfolio, href: "/portfolio" },
     { name: t.about, href: "/about" },
@@ -67,8 +69,22 @@ export default function Navbar() {
   }, [isOpen]);
 
   useEffect(() => {
+    // Close menus when route changes
+    setIsServicesOpen(false);
+    setIsPacksOpen(false);
+    setIsOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
+      
+      // Close desktop menus on scroll
+      if (Math.abs(currentScrollY - lastScrollY.current) > 10) {
+        setIsServicesOpen(false);
+        setIsPacksOpen(false);
+      }
+
       if (isOpen) return;
       if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
         setIsVisible(false);
@@ -78,8 +94,20 @@ export default function Navbar() {
       setScrolled(currentScrollY > 50);
       lastScrollY.current = currentScrollY;
     };
+
+    const handleClickOutside = () => {
+      setIsServicesOpen(false);
+      setIsPacksOpen(false);
+      // Don't close language or main menu implicitly unless desired, but usually good for dropdowns
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("click", handleClickOutside);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("click", handleClickOutside);
+    };
   }, [isOpen]);
 
   if (!mounted) return null;
@@ -113,11 +141,63 @@ export default function Navbar() {
 
             {/* Desktop Nav Center - Fixed Spacing for FR */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-8 absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
+              
+              {/* SERVICES DROPDOWN - Click Trigger */}
+              <div className="relative">
+                <button
+                  className={`cursor-pointer text-[9px] xl:text-[10px] font-black uppercase tracking-[0.1em] flex items-center gap-1 transition-colors ${isActive('/services') || isServicesOpen ? "text-white" : "text-white/70 hover:text-white"}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsServicesOpen(!isServicesOpen);
+                    setIsPacksOpen(false); // Close other menu
+                  }}
+                >
+                  {t.services}
+                  <ChevronDown
+                    size={10}
+                    className={`${isServicesOpen ? "rotate-180" : ""} transition-transform duration-300`}
+                  />
+                </button>
+                
+                {/* Mega Menu Dropdown */}
+                <div
+                  className={`${isServicesOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-2 invisible"} absolute top-full -left-10 pt-6 transition-all duration-300 w-[600px]`}
+                  onClick={(e) => e.stopPropagation()} 
+                >
+                  <div className="bg-black/95 backdrop-blur-2xl rounded-3xl p-6 border border-white/10 shadow-2xl grid grid-cols-2 gap-4">
+                    {dictionaries[currentLang]?.services_page?.list?.map((service: any, idx: number) => (
+                      <Link
+                        key={idx}
+                        href="/services"
+                        className="group block p-4 rounded-2xl hover:bg-white/5 transition-all border border-transparent hover:border-white/5"
+                        onClick={() => setIsServicesOpen(false)}
+                      >
+                        <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-1 group-hover:text-accent transition-colors flex items-center gap-2">
+                           <span className="w-1.5 h-1.5 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity"/>
+                           {service.title}
+                        </h4>
+                        <p className="text-white/50 text-[10px] leading-relaxed line-clamp-2">
+                          {service.desc}
+                        </p>
+                      </Link>
+                    ))}
+                    
+                    {/* Call to Action in Menu */}
+                    <div className="col-span-2 mt-2 pt-4 border-t border-white/5 flex justify-between items-center px-2">
+                      <span className="text-white/40 text-[9px] uppercase tracking-widest font-bold">Discover our expertise</span>
+                      <AnimatedButton href="/services" className="py-2 px-4 text-[9px]" showIcon onClick={() => setIsServicesOpen(false)}>
+                        View All Services
+                      </AnimatedButton>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-[9px] xl:text-[10px] font-black uppercase tracking-[0.1em] relative group transition-colors ${isActive(link.href) ? "text-white" : "text-white/70 hover:text-white"}`}
+                  className={`cursor-pointer text-[9px] xl:text-[10px] font-black uppercase tracking-[0.1em] relative group transition-colors ${isActive(link.href) ? "text-white" : "text-white/70 hover:text-white"}`}
                 >
                   {link.name}
                   <span
@@ -126,13 +206,14 @@ export default function Navbar() {
                 </Link>
               ))}
 
-              <div
-                className="relative"
-                onMouseEnter={() => setIsPacksOpen(true)}
-                onMouseLeave={() => setIsPacksOpen(false)}
-              >
+              <div className="relative">
                 <button
-                  className={`text-[9px] xl:text-[10px] font-black uppercase tracking-[0.1em] flex items-center gap-1 transition-colors ${packs.some((p) => isActive(p.href)) ? "text-white" : "text-white/70 hover:text-white"}`}
+                  className={`cursor-pointer text-[9px] xl:text-[10px] font-black uppercase tracking-[0.1em] flex items-center gap-1 transition-colors ${packs.some((p) => isActive(p.href)) || isPacksOpen ? "text-white" : "text-white/70 hover:text-white"}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsPacksOpen(!isPacksOpen);
+                    setIsServicesOpen(false); // Close other menu
+                  }}
                 >
                   Packs{" "}
                   <ChevronDown
@@ -141,14 +222,15 @@ export default function Navbar() {
                   />
                 </button>
                 <div
-                  className={`${isPacksOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-2 invisible"} absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-300`}
+                  className={`${isPacksOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 -translate-y-2 invisible"} absolute top-full left-1/2 -translate-x-1/2 pt-6 transition-all duration-300`}
                 >
-                  <div className="bg-black/90 rounded-xl p-2 border border-white/10 min-w-[140px] shadow-2xl backdrop-blur-xl">
+                  <div className="bg-black/95 rounded-xl p-2 border border-white/10 min-w-[140px] shadow-2xl backdrop-blur-xl">
                     {packs.map((pack) => (
                       <Link
                         key={pack.name}
                         href={pack.href}
                         className={`block px-4 py-2 text-[9px] font-bold uppercase tracking-widest rounded-lg transition-all ${isActive(pack.href) ? "text-white bg-white/10" : "text-white/60 hover:text-white hover:bg-white/5"}`}
+                        onClick={() => setIsPacksOpen(false)}
                       >
                         {pack.name}
                       </Link>
@@ -230,6 +312,15 @@ export default function Navbar() {
       >
         <div className="flex flex-col items-center justify-start min-h-full space-y-8 px-6 pt-32 pb-20">
           <div className="flex flex-col items-center space-y-4">
+            {/* Services Link - Mobile Only */}
+            <Link
+              href="/services"
+              onClick={() => setIsOpen(false)}
+              className={`text-3xl font-black uppercase tracking-tighter hover:text-accent transition-colors ${isActive('/services') ? "text-accent" : "text-white"}`}
+            >
+              {t.services}
+            </Link>
+
             {navLinks.map((link, i) => (
               <Link
                 key={link.name}

@@ -5,7 +5,7 @@
     "portfolio": "Portfolio",
     "about": "About",
     "team": "Team",
-    "blog": "The Blog",
+    "blog": "Blog",
     "cta": "Request a Quote!"
   },
   "common": {
@@ -160,6 +160,101 @@
         "features": ["Technical SEO Audit", "Netlinking & Backlinks", "Data Analysis", "SEA / Google Ads Campaigns"]
       }
     ]
+  },
+  "services_departments": {
+    "badge": "Digital Excellence",
+    "title_main": "Our",
+    "title_italic": "departments.",
+    "description": "We've specialized our expertise into three core pillars of digital success.",
+    "cta": "Get Started",
+    "items": [
+      {
+        "id": "development",
+        "title": "Development",
+        "desc": "We build high-performance web and mobile solutions tailored to your unique business needs, ensuring scalability and security.",
+        "features": ["Custom Web Apps", "Mobile Solutions", "Cloud Architecture", "API Integration"]
+      },
+      {
+        "id": "ecommerce",
+        "title": "E-Commerce / Media",
+        "desc": "Empowering brands with robust E-commerce platforms and strategic digital media content that drives higher conversion rates.",
+        "features": ["Shopify & Custom Stores", "Conversion Optimization", "Ads Management", "Social Media Strategy"]
+      },
+      {
+        "id": "production",
+        "title": "Shooting / Production",
+        "desc": "From professional photography to cinematic video production, we capture your brand's essence with high-quality visual storytelling.",
+        "features": ["Professional Photography", "Cinematic Video", "Post-Production", "Motion Graphics"]
+      }
+    ]
+  },
+  "department_details": {
+    "development": {
+      "title": "Development",
+      "tagline": "Architecting Innovation & Performance",
+      "services": [
+        {
+          "title": "Custom Web Development",
+          "tagline": "Performance, Scalability & Security",
+          "desc": "The backend is the brain behind your project's success, ensuring stability and performance to push your platform forward. We build robust web applications using Next.js and Laravel to guarantee a seamless user experience.",
+          "features": ["Progressive Web Apps (PWA)", "Content Management Systems (CMS)", "E-commerce & SaaS Platforms", "Core Web Vitals Optimization"]
+        },
+        {
+          "title": "iOS & Android Mobile Apps",
+          "tagline": "Your Business at your fingertips",
+          "desc": "We develop exceptional mobile applications combining performance and attractive design. Using technologies like React Native and Kotlin, we create intuitive interfaces that captivate your users.",
+          "features": ["Native iOS & Android Development", "Cross-platform (React Native/Expo)", "App Maintenance", "Third-party API Integration"]
+        },
+        {
+          "title": "UI/UX & Web Design",
+          "tagline": "Immersive User Experience",
+          "desc": "We create visual magic that captivates your visitors with intuitive and aesthetic interfaces. Every pixel is designed to reflect your brand identity while facilitating the user journey.",
+          "features": ["Wireframing & Prototyping", "Modern UI Design", "UX Audit", "Brand Identity & Branding"]
+        }
+      ]
+    },
+    "ecommerce": {
+      "title": "E-Commerce",
+      "tagline": "Scaling Brands, Maximizing Conversion",
+      "services": [
+        {
+          "title": "Shopify & Custom E-Commerce",
+          "tagline": "Built for Sales",
+          "desc": "From Shopify to complex custom builds, we create stores that don't just look good—they sell. Security and speed are at the core of our e-commerce DNA.",
+          "features": ["Shopify Expert Development", "Custom Checkout flows", "Inventory Sync", "Payment Gateway Integration"]
+        },
+        {
+          "title": "SEO & Digital Strategy",
+          "tagline": "Dominate Search Engine Results",
+          "desc": "Gain the visibility your brand deserves. Our technical and semantic SEO expertise ensures you stay at the top of Google results.",
+          "features": ["Technical Audits", "Backlink Strategy", "Local SEO", "Content Optimization"]
+        },
+        {
+          "title": "Copywriting & Content Strategy",
+          "tagline": "Words that Sell & Engage",
+          "desc": "The brain of your success lies in your message. We create impactful content that resonates with your audience and drives growth.",
+          "features": ["Advertising Copy", "Brand Storytelling", "SEO-first Content", "Social Media Hooks"]
+        }
+      ]
+    },
+    "production": {
+      "title": "Production",
+      "tagline": "High-Quality Visual Storytelling",
+      "services": [
+        {
+          "title": "Media Production & Shooting",
+          "tagline": "Brand Identity in Motion",
+          "desc": "Professional photo shoots and video production (reels, corporate, ads) that capture your brand's essence with unmatched quality.",
+          "features": ["Commercial Photo Shoots", "Professional Video Production", "Aerial / Drone Footage", "Event Coverage"]
+        },
+        {
+          "title": "Post-Production & Motion",
+          "tagline": "Cinematic Finishing Touches",
+          "desc": "Where the magic truly happens. We polish every frame and add motion graphics that bring your digital presence to life.",
+          "features": ["Dynamic Video Editing", "Color Grading", "2D/3D Motion Graphics", "Sound Design"]
+        }
+      ]
+    }
   },
   "expertises_page": {
     "badge": "Our Know-How",

@@ -179,6 +179,74 @@
       }
     ]
   },
+  "department_details": {
+    "development": {
+      "title": "Développement",
+      "tagline": "Performance, Scalabilité & Sécurité",
+      "services": [
+        {
+          "title": "Développement Web Sur Mesure",
+          "tagline": "Performance, Scalabilité & Sécurité",
+          "desc": "Le backend est le cerveau derrière le succès de votre projet, assurant stabilité et performance pour propulser votre plateforme vers l'avant. Nous concevons des applications web robustes utilisant Next.js et Laravel pour garantir une expérience utilisateur fluide et une rapidité de chargement optimale.",
+          "features": ["Applications Web Progressives (PWA)", "Systèmes de gestion de contenu (CMS)", "E-commerce & Plateformes SaaS", "Optimisation Core Web Vitals"]
+        },
+        {
+          "title": "Applications Mobiles iOS & Android",
+          "tagline": "Votre Business à portée de main",
+          "desc": "Nous développons des applications mobiles exceptionnelles associant performances et design attrayant. En utilisant des technologies comme React Native et Kotlin, nous créons des interfaces intuitives qui captivent vos utilisateurs.",
+          "features": ["Développement iOS & Android Natif", "Cross-platform (React Native/Expo)", "Maintenance Applicative", "Intégration d'API tierces"]
+        },
+        {
+          "title": "Design UI/UX & Web Design",
+          "tagline": "Expérience Utilisateur Immersive",
+          "desc": "Nous créons la magie visuelle qui captive vos visiteurs avec des interfaces intuitives et esthétiques. Chaque pixel est pensé pour refléter l'identité de votre marque tout en facilitant le parcours de l'utilisateur.",
+          "features": ["Wireframing & Prototypage", "Design d'interface (UI) moderne", "Audit d'expérience utilisateur (UX)", "Charte graphique & Branding"]
+        }
+      ]
+    },
+    "ecommerce": {
+      "title": "E-Commerce",
+      "tagline": "Scaling des Marques & Conversion Maximale",
+      "services": [
+        {
+          "title": "Shopify & E-Commerce Sur Mesure",
+          "tagline": "Conçu pour la Vente",
+          "desc": "Du Shopify aux solutions complexes, nous créons des boutiques qui vendent réellement. Sécurité et rapidité sont nos priorités.",
+          "features": ["Expertise Shopify", "Flux de commande personnalisés", "Sync d'inventaire", "Passerelles de Paiement"]
+        },
+        {
+          "title": "SEO & Stratégie Digitale",
+          "tagline": "Dominez les Résultats de Recherche",
+          "desc": "Obtenez la visibilité que votre marque mérite. Notre expertise SEO technique vous maintient en haut de Google.",
+          "features": ["Audits Techniques", "Stratégie Backlinks", "SEO Local", "Optimisation Contenu"]
+        },
+        {
+          "title": "Rédaction & Stratégie de Contenu",
+          "tagline": "Des Mots qui Vendent & Engagent",
+          "desc": "Le succès réside dans votre message. Nous créons du contenu percutant qui résonne avec votre audience.",
+          "features": ["Copywriting Publicitaire", "Storytelling de Marque", "Contenu SEO-first", "Hooks Réseaux Sociaux"]
+        }
+      ]
+    },
+    "production": {
+      "title": "Production",
+      "tagline": "Storytelling Visuel de Haute Qualité",
+      "services": [
+        {
+          "title": "Production Média & Shooting",
+          "tagline": "Identité de Marque en Mouvement",
+          "desc": "Shootings photo et productions vidéo professionnelles (reels, corpo, ads) capturant l'essence de votre marque.",
+          "features": ["Shooting Photo Commercial", "Production Vidéo Pro", "Drones / Prises de vue aériennes", "Couverture Événementielle"]
+        },
+        {
+          "title": "Post-Production & Motion",
+          "tagline": "Finitions Cinématographiques",
+          "desc": "Là où la magie se produit. Nous montons et ajoutons des graphismes qui animent votre présence digitale.",
+          "features": ["Montage Vidéo Dynamique", "Étalonnage (Color Grading)", "Motion Graphics 2D/3D", "Design Sonore"]
+        }
+      ]
+    }
+  },
   "expertises_page": {
     "badge": "Notre Savoir-Faire",
     "title_main": "NOTRE PALETTE",

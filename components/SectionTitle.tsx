@@ -20,13 +20,13 @@ const SectionTitle: React.FC<SectionTitleProps> = ({ children, className = '' })
 
     gsap.fromTo(el, 
       { 
-        y: 50, 
+        y: 30, 
         opacity: 0 
       },
       {
         y: 0,
         opacity: 1,
-        duration: 1.5, // Slower duration
+        duration: 0.8,
         ease: "power2.out", // Smoother ease
         scrollTrigger: {
           trigger: el,
