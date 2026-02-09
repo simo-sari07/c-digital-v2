@@ -4,21 +4,25 @@ import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { Code, ShoppingBag, Clapperboard, ArrowRight, Check } from 'lucide-react';
-import AnimatedButton from './AnimatedButton';
+import { Code, ShoppingBag, Clapperboard, ArrowRight } from 'lucide-react';
+
 // Imports dial les fichiers JSON
 import fr from '@/locales/fr.json';
 import en from '@/locales/en.json';
 
 const dictionaries: any = { fr, en };
 
-const icons: any = {
-  development: <Code className="w-8 h-8 md:w-10 md:h-10 text-violet-400 group-hover:scale-110 transition-transform duration-500" />,
-  ecommerce: <ShoppingBag className="w-8 h-8 md:w-10 md:h-10 text-fuchsia-400 group-hover:scale-110 transition-transform duration-500" />,
-  production: <Clapperboard className="w-8 h-8 md:w-10 md:h-10 text-violet-400 group-hover:scale-110 transition-transform duration-500" />,
+const iconMap: Record<number, any> = {
+  0: Code,
+  1: ShoppingBag,
+  2: Clapperboard,
 };
 
-gsap.registerPlugin(ScrollTrigger);
+const bentoSpans: Record<number, string> = {
+  0: "lg:col-span-4 lg:row-span-1",
+  1: "lg:col-span-4 lg:row-span-1",
+  2: "lg:col-span-4 lg:row-span-1",
+};
 
 export default function ServicesList() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -45,19 +49,19 @@ export default function ServicesList() {
       gsap.fromTo(cards, 
         { 
           opacity: 0, 
-          y: 60, 
-          scale: 0.9 
+          y: 40,
+          scale: 0.95
         },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.8,
+          duration: 1,
           stagger: 0.1,
-          ease: "power2.out",
+          ease: "expo.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 80%",
+            start: "top 85%",
             toggleActions: "play none none none"
           }
         }
@@ -72,72 +76,67 @@ export default function ServicesList() {
   if (!mounted) return null;
 
   return (
-    <div ref={containerRef} className="w-full max-w-7xl mx-auto py-32 space-y-48">
-      {t.items.map((service: any, index: number) => {
-        const isFirst = index % 2 === 0;
-        return (
-          <div 
-            key={service.id}
-            className={`service-card flex flex-col ${isFirst ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center px-4 md:px-8`}
-          >
-            {/* Visual Block */}
-            <div className="w-full lg:w-1/2 relative aspect-square md:aspect-video lg:aspect-square rounded-[3rem] overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-700" />
-              <div className="absolute inset-0 bg-black/40 backdrop-blur-3xl border border-white/10 group-hover:border-violet-500/30 transition-colors duration-500" />
-              
-              {/* Massive Floating Icon */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="relative transform group-hover:scale-110 transition-transform duration-700">
-                  <div className="absolute inset-0 bg-violet-500/20 blur-[60px] rounded-full animate-aura" />
-                  <div className="relative p-12 bg-white/5 rounded-[2.5rem] border border-white/10 backdrop-blur-xl shadow-2xl">
-                    {icons[service.id]}
+    <div ref={containerRef} className="w-full py-10 px-4 md:px-8 xl:px-4 max-w-screen-2xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+        {t.items.map((service: any, index: number) => {
+          const Icon = iconMap[index % 3];
+          const spanClass = bentoSpans[index % 3] || "lg:col-span-4";
+          
+          return (
+            <div 
+              key={index}
+              className={`service-card group relative flex flex-col bg-white/[0.02] border border-white/5 rounded-[2rem] p-8 overflow-hidden transition-all duration-700 hover:bg-white/[0.04] hover:border-violet-500/20 hover:shadow-[0_40px_100px_rgba(124,58,237,0.05)] min-h-[320px] ${spanClass}`}
+            >
+              <div className="relative z-20 h-full flex flex-col">
+                {/* Header: Icon & Type */}
+                <div className="flex justify-between items-start mb-8">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-violet-600/20 blur-2xl rounded-full" />
+                    <Icon size={24} className="text-violet-400 relative z-10" />
+                  </div>
+                  <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.2em] group-hover:text-violet-500/40 transition-colors">
+                    SERVICE
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div className="flex-grow flex flex-col justify-end">
+                  <h3 className="text-xl md:text-2xl font-black text-white mb-2 uppercase tracking-tighter leading-tight transition-all duration-500 group-hover:text-gradient">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed font-medium opacity-60 group-hover:opacity-100 transition-opacity max-w-[90%] mb-10">
+                    {service.desc}
+                  </p>
+
+                  {/* High-End Action Button (Always aligned at bottom) */}
+                  <div className="flex items-center gap-3">
+                    <div className="inline-flex items-center gap-3 text-[10px] font-black text-white/50 group-hover:text-white transition-all duration-500">
+                      <span className="tracking-[0.2em] relative">
+                        EXPLORE DEPARTMENT
+                        <div className="absolute -bottom-1 left-0 w-0 h-[1px] bg-violet-500 group-hover:w-full transition-all duration-500" />
+                      </span>
+                      <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-violet-600 group-hover:border-violet-500 transition-all duration-500 transform group-hover:translate-x-1">
+                        <ArrowRight size={14} className="text-white" />
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+                {/* Invisible Hover Link Overlay */}
+                <Link href={`/services/${service.id}`} className="absolute inset-0 z-30" />
               </div>
-              
-              {/* Diagonal Number Backdrop */}
-              <span className="absolute top-10 right-10 text-[12rem] font-black text-white/[0.03] select-none leading-none">
-                0{index + 1}
-              </span>
+
+              {/* Ghost Background Icon */}
+              <div className="absolute bottom-4 right-4 opacity-[0.03] transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-12 group-hover:opacity-[0.07]">
+                 <Icon size={160} strokeWidth={0.5} />
+              </div>
+
+              {/* Bottom Glow */}
+              <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-violet-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
-
-            {/* Content Block */}
-            <div className={`w-full lg:w-1/2 flex flex-col ${isFirst ? 'lg:items-start' : 'lg:items-end'} text-center ${isFirst ? 'lg:text-left' : 'lg:text-right'}`}>
-              <div className="inline-block px-4 py-2 rounded-full border border-violet-500/20 bg-violet-500/5 text-violet-400 text-[10px] font-black tracking-[0.2em] uppercase mb-6">
-                Department 0{index + 1}
-              </div>
-              
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 uppercase tracking-tighter leading-none">
-                {service.title}
-              </h3>
-              
-              <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-10 font-medium max-w-xl">
-                {service.desc}
-              </p>
-
-              {/* Features Grid-style List */}
-              <div className={`flex flex-wrap gap-4 mb-12 ${isFirst ? 'justify-start' : 'justify-end'}`}>
-                {service.features.map((feature: string, i: number) => (
-                  <div key={i} className="px-5 py-3 rounded-2xl bg-white/5 border border-white/10 text-xs md:text-sm font-bold text-white/80 hover:border-violet-500/30 transition-colors cursor-default">
-                    {feature}
-                  </div>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <Link href={`/services/${service.id}`}>
-                <AnimatedButton 
-                  showIcon 
-                  variant="primary" 
-                  className="px-10 py-5 bg-gradient-to-r from-violet-600 to-fuchsia-600 border-none shadow-xl shadow-violet-500/10"
-                >
-                  {t.cta}
-                </AnimatedButton>
-              </Link>
-            </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </div>
   );
 }

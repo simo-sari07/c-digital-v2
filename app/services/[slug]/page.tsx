@@ -101,22 +101,35 @@ export default function ServiceDepartmentPage() {
         }
       );
 
-      // Service cards staggered animation
-      gsap.fromTo(".animate-card",
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          delay: 0.5,
+      // Service sections staggered reveal
+      const sections = gsap.utils.toArray('.service-section');
+      sections.forEach((section: any) => {
+        const visual = section.querySelector('.visual-block');
+        const content = section.querySelector('.content-block');
+        
+        const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: ".grid-container",
+            trigger: section,
             start: "top 80%",
+            toggleActions: "play none none none"
           }
-        }
-      );
+        });
+
+        tl.fromTo(section, 
+          { opacity: 0 }, 
+          { opacity: 1, duration: 0.5 }
+        )
+        .fromTo(visual, 
+          { x: -50, opacity: 0, scale: 0.9 }, 
+          { x: 0, opacity: 1, scale: 1, duration: 1, ease: "expo.out" },
+          "-=0.3"
+        )
+        .fromTo(content, 
+          { x: 50, opacity: 0 }, 
+          { x: 0, opacity: 1, duration: 1, ease: "expo.out" },
+          "-=0.7"
+        );
+      });
       
       // Floating animation for background glows
       gsap.to(".bg-glow", {
@@ -150,7 +163,7 @@ export default function ServiceDepartmentPage() {
   }
 
   return (
-    <main ref={containerRef} className="min-h-screen bg-black relative overflow-hidden pt-32 pb-20">
+    <main ref={containerRef} className="min-h-screen bg-black relative overflow-hidden pt-32 pb-10">
       {/* Background Decor */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className={`bg-glow absolute top-[-10%] right-[-10%] w-[60%] h-[60%] ${theme.glow} blur-[150px] rounded-full`} />
@@ -197,81 +210,85 @@ export default function ServiceDepartmentPage() {
           </div>
         </div>
 
-        <SectionWrapper className="relative z-10 px-6 md:px-12 lg:px-24">
-          {/* Detailed Services Sections (Split Layout) */}
-          <div className="space-y-32">
+        <SectionWrapper className="relative z-10 !pb-10 px-6 md:px-12 lg:px-24">
+          {/* Detailed Services Sections (Cinematic Left Layout) */}
+          <div className="space-y-40">
           {department.services.map((service: any, idx: number) => {
-            const isFirst = idx % 2 === 0;
             return (
               <div 
                 key={idx}
-                className={`animate-card opacity-0 flex flex-col ${isFirst ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-24 items-center`}
+                className="service-section opacity-0 flex flex-col lg:flex-row gap-16 lg:gap-32 items-center"
               >
-                {/* Visual Block */}
-                <div className="w-full lg:w-1/2 relative aspect-square lg:aspect-video rounded-[3rem] overflow-hidden group">
+                {/* Visual Block (Left) */}
+                <div className="visual-block w-full lg:w-1/2 relative aspect-square md:aspect-video rounded-[3rem] overflow-hidden group">
                   <div className={`absolute inset-0 bg-gradient-to-br ${theme.glow.replace('bg-', 'from-').replace('/10', '/30')} to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-700`} />
                   <div className={`absolute inset-0 ${theme.pattern} scale-150 opacity-20`} />
                   
                   {/* Glowing Icon Central Piece */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className={`relative p-12 rounded-[2rem] bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl ${theme.shadow} group-hover:scale-110 transition-transform duration-700`}>
-                      <div className={`absolute inset-0 ${theme.glow} blur-3xl opacity-50`} />
+                    <div className={`relative p-16 md:p-20 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-2xl shadow-2xl ${theme.shadow} group-hover:scale-105 transition-transform duration-1000`}>
+                      <div className={`absolute inset-0 ${theme.glow.replace('10', '40')} blur-[80px] opacity-40`} />
                       {React.cloneElement(iconMap[service.title] || <Monitor className="w-6 h-6 text-white" />, { 
-                        className: `w-16 h-16 relative z-10 ${theme.text}` 
+                        className: `w-20 h-20 md:w-24 md:h-24 relative z-10 ${theme.text}` 
                       })}
                     </div>
                   </div>
 
-                  {/* Aesthetic Particles */}
+                  {/* Aesthetic Floating Particles */}
                   <div className={`absolute top-1/4 left-1/4 w-2 h-2 rounded-full ${theme.text.replace('text-', 'bg-')} blur-sm animate-pulse`} />
-                  <div className={`absolute bottom-1/3 right-1/4 w-3 h-3 rounded-full ${theme.text.replace('text-', 'bg-')} blur-md opacity-50 animate-bounce`} />
+                  <div className={`absolute bottom-1/3 right-1/4 w-3 h-3 rounded-full ${theme.text.replace('text-', 'bg-')} blur-md opacity-40 animate-bounce`} />
                 </div>
 
-                {/* Content Block */}
-                <div className="w-full lg:w-1/2 space-y-8">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4">
-                      <span className="text-5xl font-black text-white/10 font-anton">0{idx + 1}</span>
-                      <div className={`h-px flex-1 bg-gradient-to-r from-white/20 to-transparent`} />
+                {/* Content Block (Right) */}
+                <div className="content-block w-full lg:w-1/2 space-y-10">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-6">
+                      <span className="text-6xl md:text-7xl font-black text-white/10 font-anton leading-none">0{idx + 1}</span>
+                      <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent relative">
+                         <div className={`absolute left-0 top-0 h-full w-20 bg-gradient-to-r ${theme.accent} opacity-50`} />
+                      </div>
                     </div>
-                    <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight font-anton">
-                      {service.title}
-                    </h3>
-                    <p className={`text-sm font-black uppercase tracking-[0.3em] ${theme.text} opacity-80`}>
-                      {service.tagline}
-                    </p>
+                    
+                    <div className="space-y-2">
+                       <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter uppercase leading-[0.9] font-anton">
+                         {service.title}
+                       </h3>
+                       <p className={`text-xs md:text-sm font-black uppercase tracking-[0.4em] ${theme.text} opacity-90`}>
+                         {service.tagline}
+                       </p>
+                    </div>
                   </div>
 
-                  <p className="text-gray-400 text-lg leading-relaxed font-medium">
+                  <p className="text-gray-400 text-base md:text-lg leading-relaxed font-medium max-w-xl">
                     {service.desc}
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {service.features.map((feature: any, fIdx: number) => (
-                      <div key={fIdx} className="flex items-center gap-3 text-sm font-semibold text-white/70 bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
+                      <div key={fIdx} className="flex items-center gap-3 text-sm font-bold text-white/80 bg-white/[0.03] p-4 rounded-2xl border border-white/5 hover:border-white/10 transition-colors">
                         <Check size={14} className={theme.text} />
                         {feature}
                       </div>
                     ))}
                   </div>
 
-                  <div className="pt-4">
+                  <div className="pt-6">
                     <AnimatedButton 
                       href="/contact" 
                       showIcon 
-                      className={`px-10 py-4 bg-white/5 border-white/10 hover:bg-white/10 hover:border-${theme.text.split('-')[1]}-500/40 transition-all`}
+                      className={`px-12 py-5 text-xs font-black bg-gradient-to-r ${theme.accent} border-none shadow-2xl ${theme.shadow} hover:scale-105 transition-transform relative overflow-hidden group/btn text-black uppercase`}
                     >
-                      {lang === 'fr' ? 'Demander ce Service' : 'Request this Service'}
+                      REQUEST THIS SERVICE
                     </AnimatedButton>
                   </div>
                 </div>
               </div>
             );
           })}
-        </div>
+          </div>
 
         {/* Final CTA Section */}
-        <div className="mt-40">
+        <div className="mt-10">
           <div className={`animate-card opacity-0 relative rounded-[4rem] overflow-hidden p-12 md:p-24 text-center bg-gradient-to-br from-white/[0.03] to-white/[0.01] border ${theme.border} group`}>
             <div className={`absolute inset-full ${theme.glow} blur-[120px] opacity-0 group-hover:opacity-100 transition-opacity duration-1000`} />
             <div className="relative z-10 max-w-3xl mx-auto space-y-10">
