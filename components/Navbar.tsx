@@ -138,7 +138,7 @@ export default function Navbar() {
                 />
               </div>
             </Link>
-
+{/* Desktop Nav Center - Fixed Spacing for FR */}
             {/* Desktop Nav Center - Fixed Spacing for FR */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-8 absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
               
