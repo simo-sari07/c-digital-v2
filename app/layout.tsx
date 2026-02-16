@@ -67,8 +67,12 @@ export const metadata: Metadata = {
     description: 'Digital Marketing & Web Development at its finest.',
     images: ['/og-image.jpg'],
   },
+  icons: {
+    icon: '/icon.png', 
+    apple: '/icon.png', 
+  },
   verification: {
-    google: 'I42sCPR4NxgnW8nguoJ_TmUS8H0_B5HeX4hUEs0o6G8', // Had l-koud ni-chan
+    google: 'I42sCPR4NxgnW8nguoJ_TmUS8H0_B5HeX4hUEs0o6G8', 
   },
 };
 
