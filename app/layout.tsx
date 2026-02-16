@@ -33,12 +33,21 @@ const anton = Anton({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: 'C-DIGITAL | Agence Web & Marketing Digital à Marrakech',
-    template: '%s | C-DIGITAL'
-  },
-  description: 'C-DIGITAL est une agence web premium à Marrakech spécialisée dans la création de sites web, le SEO et le marketing digital. Boostez votre visibilité en ligne.',
-  keywords: ['Agence Web Marrakech', 'Marketing Digital Maroc', 'Création site web Marrakech', 'SEO Maroc', 'C-DIGITAL'],
+title: 'C-DIGITAL | Société de Développement Web & Mobile au Maroc',
+  description: 'C-DIGITAL est votre société de développement à Marrakech, Casablanca, Rabat et Agadir. Nous créons des solutions digitales innovantes pour votre entreprise au Maroc.',
+  keywords: [
+    'société de développement maroc', 
+    'société de développement marrakech', 
+    'société de développement casablanca', 
+    'société de développement rabat', 
+    'société de développement agadir',
+    'digital societe maroc',
+    'Agence Web Marrakech', 
+    'Marketing Digital Maroc', 
+    'Création site web Marrakech',
+     'SEO Maroc', 
+     'C-DIGITAL'
+  ],
   authors: [{ name: 'C-DIGITAL Team' }],
   creator: 'C-DIGITAL',
   metadataBase: new URL('https://cdigital.ma'),
