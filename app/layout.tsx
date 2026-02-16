@@ -4,7 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SmoothScroll from '@/components/SmoothScroll';
-
+import { GoogleAnalytics } from '@next/third-parties/google';
 import CustomCursor from '@/components/CustomCursor';
 import BackgroundScrollManager from '@/components/BackgroundScrollManager';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -72,6 +72,8 @@ export const metadata: Metadata = {
   },
 };
 
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -93,6 +95,9 @@ export default function RootLayout({
           <ScrollToTop />
           <WhatsappContact />
         </SmoothScroll>
+        
+       
+        <GoogleAnalytics gaId="G-31JCG7LWLK" /> 
       </body>
     </html>
   );
