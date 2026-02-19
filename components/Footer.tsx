@@ -116,7 +116,7 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 pb-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[10px] font-bold text-gray-500 uppercase tracking-widest gap-4">
-          <div className="flex items-center gap-4"><span className="text-violet-500">●</span><p>© 2026 C-DIGITAL. {t.bottom.rights} | Designed and Developed by Mohamed Sari</p></div>
+          <div className="flex items-center gap-4"><span className="text-violet-500">●</span><p>© 2026 C-DIGITAL. {t.bottom.rights} </p></div>
           <div className="flex gap-8">
             <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
