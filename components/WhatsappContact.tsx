@@ -70,7 +70,7 @@ export default function WhatsappContact() {
 
             <div className="p-6 space-y-4">
               <p className="text-gray-400 text-sm leading-relaxed">{t.description}</p>
-              <a href="https://wa.me/+212675775884" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white/5 hover:bg-white/10 p-4 rounded-xl border border-white/10 transition-all group">
+              <a href="https://wa.me/+212720016151" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between bg-white/5 hover:bg-white/10 p-4 rounded-xl border border-white/10 transition-all group">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg" style={{ backgroundColor: themeColor }}>M.S</div>
                   <div>

@@ -83,8 +83,8 @@ export default function Footer() {
               <h4 className="text-xs font-black text-white uppercase tracking-[0.2em]">{t.contact.title}</h4>
             </div>
             <div className="space-y-6">
-              <div><p className="text-[10px] text-gray-500 font-bold uppercase mb-1">{t.contact.support}</p><p className="text-white font-black">+212 720-016151</p></div>
-              <div><p className="text-[10px] text-gray-500 font-bold uppercase mb-1">{t.contact.email_label}</p><p className="text-white font-black break-all text-xs">contact@c-digital.ma</p></div>
+              <div><p className="text-[10px] text-gray-500 font-bold uppercase mb-1">{t.contact.support}</p><p className="text-white font-black">+212 524-308038</p> <br></br><p className="text-white font-black">+212 720-016151</p></div>
+              <div><p className="text-[10px] text-gray-500 font-bold uppercase mb-1">{t.contact.email_label}</p><p className="text-white font-black break-all text-xs">contact@cdigital.ma</p></div>
               <div className="flex gap-3">
                 <Link href="https://www.linkedin.com/company/c-digital-agency" target="_blank" className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-xl text-white hover:text-violet-500 transition-all"><Linkedin size={18} /></Link>
                 <Link href="https://www.youtube.com/@cdigitalmaroc" target="_blank" className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-xl text-white hover:text-violet-500 transition-all"><Youtube size={18} /></Link>

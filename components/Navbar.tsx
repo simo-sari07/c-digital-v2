@@ -119,22 +119,28 @@ export default function Navbar() {
       >
         <div className={`mx-auto transition-all duration-500 ${scrolled ? "max-w-[1440px] px-4 md:px-6" : "max-w-full px-0"}`}>
           <div
-            className={`flex justify-between items-center bg-black/40 backdrop-blur-xl py-2 px-4 md:px-8 shadow-2xl border-white/10 transition-all duration-500 ${scrolled ? "rounded-2xl border mx-4 md:mx-0 shadow-2xl scale-[0.98]" : "rounded-none border-b shadow-none scale-100"}`}
+            className={`flex justify-between items-center bg-black backdrop-blur-xl py-2 px-4 md:px-8 shadow-2xl border-white/10 transition-all duration-500 ${scrolled ? "rounded-2xl border mx-4 md:mx-0 shadow-2xl scale-[0.98]" : "rounded-none border-b shadow-none scale-100"}`}
           >
-            {/* Logo */}
 <Link
   href="/"
-  className="relative z-[110] flex items-center justify-center h-full min-w-[100px]"
+  className="relative z-[110] flex items-center justify-center min-w-[150px] md:min-w-[220px]" // Kbberna l-misa7a l-khawia li daira b l-logo
   onClick={() => setIsOpen(false)}
 >
-  <Image 
-    src="https://res.cloudinary.com/digfptrqs/image/upload/v1771673553/20260219_230121-removebg-preview_ybtrwa.png" 
-    alt="C-DIGITAL - Agence de Développement Web & SEO au Maroc" 
-    width={150} 
-    height={150} 
-    className="object-contain w-20 h-20 md:w-28 md:h-28" 
-    priority 
-  />
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    // Kbberna l-width dial l-video ni-chan
+    className="w-32 h-auto md:w-48 object-contain mix-blend-mode-screen" 
+    poster="/vidiologo.mp4"
+  >
+    <source 
+      src="/vidiologo.mp4" 
+      type="video/mp4" 
+    />
+    <span className="sr-only">C-DIGITAL - Agence de Développement Web & SEO au Maroc</span>
+  </video>
 </Link>
 {/* Desktop Nav Center - Fixed Spacing for FR */}
             {/* Desktop Nav Center - Fixed Spacing for FR */}
