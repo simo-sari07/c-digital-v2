@@ -33,58 +33,78 @@ const anton = Anton({
 });
 
 export const metadata: Metadata = {
-title: 'C-DIGITAL | Société de Développement Web & Mobile au Maroc',
-  description: 'C-DIGITAL est votre société de développement à Marrakech, Casablanca, Rabat et Agadir. Nous créons des solutions digitales innovantes pour votre entreprise au Maroc.',
+  // Title m-optimiz-i ktar fih l-khidamat l-asasiya
+  title: 'C-DIGITAL | Société de Développement Web, Mobile & SEO au Maroc',
+  description: 'C-DIGITAL : Agence digitale experte en création de sites web (Next.js, Laravel), applications mobiles et référencement SEO à Marrakech, Casablanca, Rabat et Agadir. Boostez votre ROI dès aujourd’hui.',
+  
   keywords: [
     'société de développement maroc', 
-    'société de développement marrakech', 
-    'société de développement casablanca', 
-    'société de développement rabat', 
-    'société de développement agadir',
-    'digital societe maroc',
-    'Agence Web Marrakech', 
-    'Marketing Digital Maroc', 
-    'Création site web Marrakech',
-     'SEO Maroc', 
-     'C-DIGITAL'
+    'agence web marrakech', 
+    'création site web casablanca', 
+    'développement application mobile maroc',
+    'expert SEO marrakech', 
+    'marketing digital maroc',
+    'développement Next.js Laravel maroc', // Zid l-techno bach t-t-ranka 3nd les connaisseurs
+    'C-DIGITAL',
+    'agence digitale rabat',
+    'e-commerce maroc'
   ],
+  
   authors: [{ name: 'C-DIGITAL Team' }],
   creator: 'C-DIGITAL',
   metadataBase: new URL('https://cdigital.ma'),
+  
   alternates: {
     canonical: '/',
   },
+
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://cdigital.ma',
-    title: 'C-DIGITAL | Agence Web & Marketing Digital Premium',
-    description: 'Créez un impact digital réel avec notre agence basée à Marrakech.',
+    // Title dial l-partage khass i-koun "Catchy"
+    title: 'C-DIGITAL | Transformez votre vision en réalité numérique au Maroc',
+    description: 'De la création de sites web au SEO, nous bâtissons des expériences digitales qui convertissent. Découvrez nos packs expert.',
     siteName: 'C-DIGITAL',
     images: [
       {
-        url: '/og-image.jpg', // T-akked blli 7titi tswira b had smiya f folder 'public'
+        url: '/og-image.jpg', 
         width: 1200,
         height: 630,
-        alt: 'C-DIGITAL Agence Web Marrakech',
+        alt: 'C-DIGITAL Agence de Développement Web Marrakech',
       },
     ],
   },
+
   twitter: {
     card: 'summary_large_image',
-    title: 'C-DIGITAL | Premium Web Agency',
-    description: 'Digital Marketing & Web Development at its finest.',
+    title: 'C-DIGITAL | Premium Web & Mobile Agency Maroc',
+    description: 'Expertise en développement Next.js, Laravel et SEO pour entreprises ambitieuses au Maroc.',
     images: ['/og-image.jpg'],
   },
+
   icons: {
-    icon: '/icon.png', 
-    apple: '/icon.png', 
+    icon: '/favicon.ico', 
+    apple: '/favicon.ico', 
   },
+
   verification: {
     google: 'I42sCPR4NxgnW8nguoJ_TmUS8H0_B5HeX4hUEs0o6G8', 
   },
+  
+  // Darori f Next.js 15 bach robots i-choufou kolchi
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
-
 
 
 export default function RootLayout({

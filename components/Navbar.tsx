@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import Link from "next/link";
 import TransitionLink from "./TransitionLink";
 import { useState, useEffect, useRef } from "react";
@@ -122,22 +122,20 @@ export default function Navbar() {
             className={`flex justify-between items-center bg-black/40 backdrop-blur-xl py-2 px-4 md:px-8 shadow-2xl border-white/10 transition-all duration-500 ${scrolled ? "rounded-2xl border mx-4 md:mx-0 shadow-2xl scale-[0.98]" : "rounded-none border-b shadow-none scale-100"}`}
           >
             {/* Logo */}
-            <Link
-              href="/"
-              className="relative z-[110] flex items-center shrink-0"
-              onClick={() => setIsOpen(false)}
-            >
-              <div className="w-12 h-12 md:w-16 md:h-16 overflow-hidden rounded-full bg-black">
-                <video
-                  src="https://res.cloudinary.com/digfptrqs/video/upload/v1769446632/WhatsApp_Video_2026-01-26_at_17.56.30_wmqma9.mp4"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover mix-blend-screen scale-[1.3]"
-                />
-              </div>
-            </Link>
+<Link
+  href="/"
+  className="relative z-[110] flex items-center justify-center h-full min-w-[100px]"
+  onClick={() => setIsOpen(false)}
+>
+  <Image 
+    src="https://res.cloudinary.com/digfptrqs/image/upload/v1771673553/20260219_230121-removebg-preview_ybtrwa.png" 
+    alt="C-DIGITAL - Agence de Développement Web & SEO au Maroc" 
+    width={150} 
+    height={150} 
+    className="object-contain w-20 h-20 md:w-28 md:h-28" 
+    priority 
+  />
+</Link>
 {/* Desktop Nav Center - Fixed Spacing for FR */}
             {/* Desktop Nav Center - Fixed Spacing for FR */}
             <div className="hidden lg:flex items-center gap-4 xl:gap-8 absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
